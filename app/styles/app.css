@@ -1,25 +1,25 @@
-/* Reset default margin and padding */
+/* Reset the default margin and padding */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body styles */
+/* Body */
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   line-height: 1.6;
 }
 
-/* Container styles */
+/* Container */
 .container {
   max-width: 1200px; /* Adjust max-width as needed */
   margin: 0 auto; /* Center align container */
   padding: 20px; /* Add padding around the container */
 }
 
-/* Navigation styles */
+/* Navigation  */
 nav {
   background-color: rgb(131, 197, 132);
   color: #fff;
@@ -42,7 +42,7 @@ nav a:hover {
   background-color: rgba(255, 255, 255, 0.1); /* Lighten background on hover */
 }
 
-/* User box styles */
+/* User box */
 .user-box {
   display: flex;
   justify-content: space-between;
@@ -58,7 +58,7 @@ nav a:hover {
   transform: translateY(-5px); /* Lift item on hover */
 }
 
-/* User info styles */
+/* User info  */
 .user-info {
   flex: 1;
 }
@@ -72,7 +72,7 @@ nav a:hover {
   line-height: 1.4;
 }
 
-/* User tasks styles */
+/* User tasks */
 .user-tasks {
   flex: 1;
   text-align: right;
@@ -93,21 +93,21 @@ nav a:hover {
   color: #333;
 }
 
-/* Task box styles */
+/* Task box */
 .task-box {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   padding: 20px;
-  transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+  transition: transform 0.2s ease-in-out; 
 }
 
 .task-box:hover {
-  transform: translateY(-5px); /* Lift item on hover */
+  transform: translateY(-5px);
 }
 
-/* Task info styles */
+/* Task info */
 .task-info {
   margin-bottom: 10px;
 }

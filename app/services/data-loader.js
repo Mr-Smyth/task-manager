@@ -8,7 +8,7 @@ export default class DataLoaderService extends Service {
   /**
    * Loads user data from a local Json file.
    * Checks if each user already exists in the store; creates a new record if not.
-   * @returns {Promise<Array>} Array of user records (Ember Data models).
+   * returns an Array of user records (Ember Data models).
    */
   async loadUsers() {
     let response = await fetch('api/users.json');
@@ -33,7 +33,7 @@ export default class DataLoaderService extends Service {
   /**
    * Loads user data from a local Json file.
    * Checks if each task already exists in the store; creates a new record if not.
-   * @returns {Promise<Array>} Array of task records (Ember Data models).
+   * returns an array of task records (Ember Data models).
    */
   async loadTasks() {
     let response = await fetch('api/tasks.json');

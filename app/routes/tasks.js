@@ -1,4 +1,3 @@
-// routes/tasks.js
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 
@@ -7,7 +6,7 @@ export default class TasksRoute extends Route {
   @service dataLoader;
 
   async model() {
-    // Load tasks and users concurrently
+    // Load the tasks and users concurrently
     await Promise.all([
       this.dataLoader.loadUsers(),
       this.dataLoader.loadTasks()
@@ -21,7 +20,8 @@ export default class TasksRoute extends Route {
       if (ownerId) {
         let user = this.store.peekRecord('user', ownerId);
         if (user) {
-          task.set('ownerDetails', user); // Example: Assuming you want to set ownerDetails on each task
+          // set ownerDetails on each task
+          task.set('ownerDetails', user); 
         }
       }
     });
