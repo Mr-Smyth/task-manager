@@ -1,0 +1,18 @@
+{{!-- templates/tasks.hbs --}}
+{{page-title "Tasks"}}
+
+<div class="container">
+  <h1>Tasks</h1>
+</div>
+
+<div class="container">
+  {{#each @model as |task|}}
+    <div class="task-box">
+      <div class="task-info">
+        <h2>{{task.title}}</h2>
+        <p class="description">{{task.description}}</p>
+        <p class="owner">Owner: {{task.ownerDetails.name}} - {{task.ownerDetails.description}}</p>
+      </div>
+    </div>
+  {{/each}}
+</div>

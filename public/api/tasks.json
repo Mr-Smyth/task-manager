@@ -1,0 +1,35 @@
+{
+   "tasks": [
+     {
+       "id": "1",
+       "title": "Cannot login via web",
+       "description": "There is an issue with the login functionality",
+       "owner": "1002"
+     },
+     {
+       "id": "2",
+       "title": "Cannot logout via web",
+       "description": "There is an issue with the logout functionality",
+       "owner": "1002"
+     },
+     {
+       "id": "3",
+       "title": "Cannot send emails",
+       "description": "There is an issue sending emails to clients",
+       "owner": "1003"
+     },
+     {
+       "id": "4",
+       "title": "Cannot print reports",
+       "description": "There is an issue where users cannot print daily reports",
+       "owner": "1004"
+     },
+     {
+       "id": "5",
+       "title": "Cannot apply discounts",
+       "description": "There is an issue where a user is unable to apply discounts to a sale",
+       "owner": "1005"
+     }
+   ]
+ }
+ 

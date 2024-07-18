@@ -1,7 +1,5 @@
-{{page-title "TaskManager"}}
-
-{{! The following component displays Ember's default welcome message. }}
-<WelcomePage />
-{{! Feel free to remove this! }}
-
+<nav>
+  <LinkTo @route="tasks">Tasks</LinkTo>
+  <LinkTo @route="users">Users</LinkTo>
+</nav>
 {{outlet}}

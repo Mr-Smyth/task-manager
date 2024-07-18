@@ -1,1 +1,126 @@
-/* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  line-height: 1.6;
+}
+
+/* Container styles */
+.container {
+  max-width: 1200px; /* Adjust max-width as needed */
+  margin: 0 auto; /* Center align container */
+  padding: 20px; /* Add padding around the container */
+}
+
+/* Navigation styles */
+nav {
+  background-color: rgb(131, 197, 132);
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end; /* Align navigation items to the right */
+  align-items: center; /* Center align vertically */
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 10px; /* Spacing between navigation items */
+  padding: 5px 10px; /* Padding inside navigation links */
+  border-radius: 3px;
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Lighten background on hover */
+}
+
+/* User box styles */
+.user-box {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+  transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.user-box:hover {
+  transform: translateY(-5px); /* Lift item on hover */
+}
+
+/* User info styles */
+.user-info {
+  flex: 1;
+}
+
+.user-info h2 {
+  margin-bottom: 10px;
+}
+
+.user-info .description {
+  color: #777;
+  line-height: 1.4;
+}
+
+/* User tasks styles */
+.user-tasks {
+  flex: 1;
+  text-align: right;
+}
+
+.user-tasks .task-count {
+  margin-bottom: 10px;
+  color: #777;
+}
+
+.task-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.task-list li {
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Task box styles */
+.task-box {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+  transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.task-box:hover {
+  transform: translateY(-5px); /* Lift item on hover */
+}
+
+/* Task info styles */
+.task-info {
+  margin-bottom: 10px;
+}
+
+.task-info h2 {
+  margin-bottom: 5px;
+}
+
+.task-info .description {
+  color: #777;
+  line-height: 1.4;
+}
+
+.task-info .owner {
+  color: #777;
+}
