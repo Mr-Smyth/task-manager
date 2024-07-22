@@ -22,7 +22,7 @@ export default class DataLoaderService extends Service {
           id: user.id,
           name: user.name,
           description: user.description,
-          taskIds: user.taskIds
+          taskIds: user.taskIds,
         });
       } else {
         return existingUser;
@@ -47,7 +47,7 @@ export default class DataLoaderService extends Service {
           id: task.id,
           title: task.title,
           description: task.description,
-          owner: task.owner
+          owner: task.owner,
         });
       } else {
         return existingTask;
