@@ -21,7 +21,7 @@ body {
 
 /* Navigation  */
 nav {
-  background-color: rgb(131, 197, 132);
+  background-color: rgb(131 197 132);
   color: #fff;
   padding: 10px;
   display: flex;
@@ -39,7 +39,7 @@ nav a {
 }
 
 nav a:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Lighten background on hover */
+  background-color: rgb(255 255 255 / 10%); /* Lighten background on hover */
 }
 
 /* User box */
@@ -48,7 +48,7 @@ nav a:hover {
   justify-content: space-between;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
   margin-bottom: 20px;
   padding: 20px;
   transition: transform 0.2s ease-in-out; /* Smooth hover effect */
@@ -97,10 +97,10 @@ nav a:hover {
 .task-box {
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
   margin-bottom: 20px;
   padding: 20px;
-  transition: transform 0.2s ease-in-out; 
+  transition: transform 0.2s ease-in-out;
 }
 
 .task-box:hover {
