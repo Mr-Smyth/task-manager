@@ -13,7 +13,9 @@ export default class TasksRoute extends Route {
     ]);
 
     let tasks = this.store.peekAll('task');
+    let users = this.store.peekAll('user');
 
-    return tasks;
+    // return the users and tasks as i need to pass the users to the user-select component
+    return { tasks, users };
   }
 }

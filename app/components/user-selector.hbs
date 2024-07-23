@@ -1,0 +1,8 @@
+<div class="user-selector">
+    <select>
+        {{#each @users as |user|}}
+        <option value={{user.id}}>{{user.name}}</option>
+        {{/each}}
+    </select>
+    <button>Assign user</button>
+</div>

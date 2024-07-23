@@ -3,7 +3,6 @@ import { inject as service } from '@ember/service';
 
 export default class UsersRoute extends Route {
   @service store;
-  @service dataLoader;
 
   async model() {
     // Retrieve all users and tasks from the store
