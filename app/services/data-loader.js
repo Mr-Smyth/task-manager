@@ -18,11 +18,27 @@ export default class DataLoaderService extends Service {
       let existingUser = this.store.peekRecord('user', user.id);
 
       if (!existingUser) {
-        return this.store.createRecord('user', {
-          id: user.id,
-          name: user.name,
-          description: user.description,
-          taskIds: user.taskIds,
+        return this.store.push({
+          data: [
+            {
+              id: user.id,
+              type: 'user',
+              attributes: {
+                name: user.name,
+                description: user.description,
+              },
+              relationships: {
+                tasks: {
+                  data: user.taskIds.map((taskId) => {
+                    return {
+                      id: taskId,
+                      type: 'task',
+                    };
+                  }),
+                },
+              },
+            },
+          ],
         });
       } else {
         return existingUser;
@@ -43,11 +59,15 @@ export default class DataLoaderService extends Service {
       let existingTask = this.store.peekRecord('task', task.id);
 
       if (!existingTask) {
-        return this.store.createRecord('task', {
-          id: task.id,
-          title: task.title,
-          description: task.description,
-          owner: task.owner,
+        return this.store.push({
+          data: {
+            id: task.id,
+            type: 'task',
+            attributes: {
+              title: task.title,
+              description: task.description,
+            },
+          },
         });
       } else {
         return existingTask;
