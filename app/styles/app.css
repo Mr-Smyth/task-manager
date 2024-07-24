@@ -14,7 +14,7 @@ body {
 
 /* Container */
 .container {
-  max-width: 1200px; 
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -25,7 +25,7 @@ nav {
   color: #fff;
   padding: 10px;
   display: flex;
-  justify-content: flex-end; 
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -33,7 +33,7 @@ nav a {
   color: #fff;
   text-decoration: none;
   margin-left: 10px;
-  padding: 5px 10px; 
+  padding: 5px 10px;
   border-radius: 3px;
   transition: background-color 0.3s ease;
 }
@@ -51,11 +51,11 @@ nav a:hover {
   box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
   margin-bottom: 20px;
   padding: 20px;
-  transition: transform 0.2s ease-in-out; 
+  transition: transform 0.2s ease-in-out;
 }
 
 .user-box:hover {
-  transform: translateY(-5px); 
+  transform: translateY(-5px);
 }
 
 /* User info  */
@@ -129,23 +129,20 @@ nav a:hover {
   color: #777;
 }
 
-
 /* Assign User container */
 .assign-user-container {
   display: flex;
   justify-content: flex-end;
   position: absolute;
   bottom: 20px;
-  right: 20px; 
+  right: 20px;
   width: 30%;
 }
 
-
 /* Assign User Component */
-.user-selector{
+.user-selector {
   width: 100%;
   height: 60%;
-
 }
 
 .user-selector select {
@@ -154,7 +151,7 @@ nav a:hover {
   border-radius: 4px;
   border: 1px solid #ccc;
   background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.131);
+  box-shadow: 0 2px 5px rgb(0 0 0 / 13.1%);
   font-size: 16px;
   color: #333;
   appearance: none;
@@ -165,7 +162,6 @@ nav a:hover {
   outline: none;
   box-shadow: 0 0 4px #98741a;
 }
-
 
 .user-selector button {
   padding: 10px 20px;

@@ -1,13 +1,3 @@
-// old code
-// import Model, { attr } from '@ember-data/model';
-
-// export default class UserModel extends Model {
-//   @attr('string') name;
-//   @attr('string') description;
-//   @attr() taskIds; // an array of task ids
-// }
-
-// new code
 import Model, { attr, hasMany } from '@ember-data/model';
 
 export default class UserModel extends Model {

@@ -1,13 +1,3 @@
-// Old code - Works
-// import Model, { attr } from '@ember-data/model';
-
-// export default class TaskModel extends Model {
-//   @attr('string') title;
-//   @attr('string') description;
-//   @attr('string') owner;
-// }
-
-// new code
 import Model, { attr, belongsTo } from '@ember-data/model';
 
 export default class TaskModel extends Model {

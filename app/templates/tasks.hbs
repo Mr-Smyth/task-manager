@@ -13,7 +13,8 @@
       <p class="owner">Owner: {{task.user.name}} - {{task.user.description}}</p>
     </div>
     <div class="assign-user-container">
-      <UserSelector @users={{@model.users}} />
+      {{!-- pass the users and the current task to the user-selector component --}}
+      <UserSelector @users={{@model.users}} @task={{task}} @onUserAssign={{this.assignUser}} />
     </div>
   </div>
   {{/each}}
