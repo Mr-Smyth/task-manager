@@ -1,8 +1,14 @@
 <div class="user-selector">
-    <select>
-        {{#each @users as |user|}}
-        <option value={{user.id}}>{{user.name}}</option>
-        {{/each}}
+  <form {{on "submit" this.handleSubmit}}>
+    <label for="assign-user">Select a user:</label>
+    <select id="assign-user" name="assign-user" value={{this.selectedUserId}} {{on "change" this.handleChange}}>
+      {{#each @users as |user|}}
+      {{!-- Always make sure the currently selected user is the current user - added the eq helper for this found in docs --}}
+        <option value={{user.id}} selected={{eq user.id this.selectedUserId}}>
+          {{user.name}}
+        </option>
+      {{/each}}
     </select>
-    <button>Assign user</button>
+    <button type="submit">Assign user</button>
+  </form>
 </div>
