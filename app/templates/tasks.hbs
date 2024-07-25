@@ -5,17 +5,33 @@
 </div>
 
 <div class="container">
-  {{#each @model.tasks as |task|}}
-  <div class="task-box">
-    <div class="task-info">
-      <h2>{{task.title}}</h2>
-      <p class="description">{{task.description}}</p>
-      <p class="owner">Owner: {{task.user.name}} - {{task.user.description}}</p>
+  <h2 class="unassigned-tasks-heading">Unassigned Tasks</h2>
+  {{#each @model.tasks.unassigned as |task|}}
+    <div class="task-box">
+      <div class="task-info">
+        <h2>{{task.title}}</h2>
+        <p class="description">{{task.description}}</p>
+        <p class="owner">Owner: {{task.user.name}} - {{task.user.description}}</p>
+      </div>
+      <div class="assign-user-container">
+        <UserSelector @users={{@model.users}} @task={{task}} @onUserAssign={{this.assignUser}} />
+      </div>
     </div>
-    <div class="assign-user-container">
-      {{!-- pass the users and the current task to the user-selector component --}}
-      <UserSelector @users={{@model.users}} @task={{task}} @onUserAssign={{this.assignUser}} />
+  {{/each}}
+
+  <hr class="section-separator">
+
+  <h2>Assigned Tasks</h2>
+  {{#each @model.tasks.assigned as |task|}}
+    <div class="task-box">
+      <div class="task-info">
+        <h2>{{task.title}}</h2>
+        <p class="description">{{task.description}}</p>
+        <p class="owner">Owner: {{task.user.name}} - {{task.user.description}}</p>
+      </div>
+      <div class="assign-user-container">
+        <UserSelector @users={{@model.users}} @task={{task}} @onUserAssign={{this.assignUser}} />
+      </div>
     </div>
-  </div>
   {{/each}}
 </div>
