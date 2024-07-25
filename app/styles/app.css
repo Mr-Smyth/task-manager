@@ -140,6 +140,17 @@ nav a:hover {
 }
 
 /* Assign User Component */
+.unassigned-tasks-heading{
+  color: red;
+}
+
+.section-separator {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 50px 50px;
+}
+
+
 .user-selector {
   width: 100%;
   height: 60%;
@@ -179,3 +190,6 @@ nav a:hover {
 .user-selector button:hover {
   background-color: #98741a;
 }
+
+
+

@@ -4,13 +4,13 @@
        "id": "1001",
        "name": "Unassigned",
        "description": "unassigned",
-       "taskIds": []
+       "taskIds": ["1"]
      },
      {
        "id": "1002",
        "name": "John Doe",
        "description": "Software Developer - Front End",
-       "taskIds": ["1", "2"]
+       "taskIds": ["2"]
      },
      {
        "id": "1003",
