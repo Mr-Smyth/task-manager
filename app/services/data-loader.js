@@ -1,3 +1,4 @@
+// app/services/data-loader.js
 import Service from '@ember/service';
 import { inject as service } from '@ember/service';
 
@@ -22,7 +23,7 @@ export default class DataLoaderService extends Service {
       // If the user doesn't exist, create a new record
       if (!existingUser) {
         return this.store.push({
-          data: [
+          data: [ // **** Why have this data object inside a list
             {
               id: user.id,
               type: 'user',

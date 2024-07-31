@@ -1,3 +1,4 @@
+// app/models/task.js
 import Model, { attr, belongsTo } from '@ember-data/model';
 
 export default class TaskModel extends Model {

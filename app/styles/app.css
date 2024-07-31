@@ -98,13 +98,20 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
   margin-bottom: 20px;
   padding: 20px;
   transition: transform 0.2s ease-in-out;
   position: relative; /* Add this */
+}
+
+.task-box-unassigned {
+  background-color: #d8bebe;
+}
+
+.task-box-assigned {
+  background-color: #fff;
 }
 
 .task-box:hover {
@@ -140,7 +147,7 @@ nav a:hover {
 }
 
 /* Assign User Component */
-.unassigned-tasks-heading{
+.unassigned-tasks-heading {
   color: red;
 }
 
@@ -149,7 +156,6 @@ nav a:hover {
   border-top: 1px solid #ccc;
   margin: 50px 50px;
 }
-
 
 .user-selector {
   width: 100%;
@@ -190,6 +196,3 @@ nav a:hover {
 .user-selector button:hover {
   background-color: #98741a;
 }
-
-
-
