@@ -7,7 +7,7 @@
 
 <div class="container">
   <h2 class="unassigned-tasks-heading">Unassigned Tasks</h2>
-  {{#each @model.tasks.unassigned as |task|}}
+  {{#each this.unassignedTasks as |task|}}
   <div class="task-box  task-box-unassigned">
     <div class="task-info">
       <h2>{{task.title}}</h2>
@@ -23,8 +23,8 @@
   <hr class="section-separator">
 
   <h2>Assigned Tasks</h2>
-  {{#each @model.tasks.assigned as |task|}}
-  <div class="task-box task-box-assigned">
+  {{#each this.assignedTasks as |task|}}
+  <div class="task-box  task-box-assigned">
     <div class="task-info">
       <h2>{{task.title}}</h2>
       <p class="description">{{task.description}}</p>
