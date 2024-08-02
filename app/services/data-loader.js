@@ -23,7 +23,8 @@ export default class DataLoaderService extends Service {
       // If the user doesn't exist, create a new record
       if (!existingUser) {
         return this.store.push({
-          data: [ // **** Why have this data object inside a list
+          data: [
+            // **** Why have this data object inside a list
             {
               id: user.id,
               type: 'user',

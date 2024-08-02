@@ -10,8 +10,8 @@ export default class UserSelectorComponent extends Component {
   // Initialize the component with the appropriate selected user ID
   constructor() {
     super(...arguments);
-    // Set the selected user ID based on the provided task, default to 1 if not provided
-    this.selectedUserId = this.args.task.user.id || 1;
+    // Set the selected user ID based on the provided task
+    this.selectedUserId = this.args.task.user.id;
   }
 
   @action
@@ -26,5 +26,12 @@ export default class UserSelectorComponent extends Component {
     event.preventDefault();
     // Call the onUserAssign function which is up in the route tasks controller with the task ID and selected user ID
     this.args.onUserAssign(this.args.task.id, this.selectedUserId);
+  }
+
+  get userOptions() {
+    return this.selectedUserId
+      ? // I want to show the option to set as unassigned when a task is already assigned else show unassigned
+        [{ id: null, name: 'Set as Unassigned' }, ...this.args.users]
+      : [{ id: null, name: 'Unassigned' }, ...this.args.users];
   }
 }
