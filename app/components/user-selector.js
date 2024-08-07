@@ -29,9 +29,9 @@ export default class UserSelectorComponent extends Component {
   }
 
   get userOptions() {
+    // I want to show the option to set as unassigned when a task is already assigned else show unassigned
     return this.selectedUserId
-      ? // I want to show the option to set as unassigned when a task is already assigned else show unassigned
-        [{ id: null, name: 'Set as Unassigned' }, ...this.args.users]
+      ? [{ id: null, name: 'Set as Unassigned' }, ...this.args.users]
       : [{ id: null, name: 'Unassigned' }, ...this.args.users];
   }
 }
