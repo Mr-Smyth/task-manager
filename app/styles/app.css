@@ -30,7 +30,7 @@ nav {
 }
 
 nav a {
-  color: #fff;
+  color: #faf9f6;
   text-decoration: none;
   margin-left: 10px;
   padding: 5px 10px;
@@ -40,6 +40,7 @@ nav a {
 
 nav a:hover {
   background-color: rgb(255 255 255 / 10%);
+  color: #ffffff;
 }
 
 /* User box */
@@ -51,7 +52,9 @@ nav a:hover {
   box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
   margin-bottom: 20px;
   padding: 20px;
-  transition: box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  transition:
+    box-shadow 0.2s ease-in-out,
+    background-color 0.2s ease-in-out;
 }
 
 .user-box:hover {
@@ -103,7 +106,9 @@ nav a:hover {
   box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
   margin-bottom: 20px;
   padding: 20px;
-  transition: box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  transition:
+    box-shadow 0.2s ease-in-out,
+    background-color 0.2s ease-in-out;
   position: relative; /* Add this */
 }
 
@@ -150,7 +155,7 @@ nav a:hover {
 
 /* Assign User Component */
 .unassigned-tasks-heading {
-  color: #8B0000;
+  color: #8b0000;
 }
 
 .section-separator {
@@ -197,4 +202,25 @@ nav a:hover {
 
 .user-selector button:hover {
   background-color: #98741a;
+}
+
+/* Create User button */
+.create-user-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(131 197 132);
+  color: #faf9f6;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
+  transition: 
+   box-shadow 0.2s ease-in-out,
+    background-color 0.3s ease;
+}
+
+.create-user-button:hover {
+  background-color: #7ab63a;
+  color: #ffffff;
+  box-shadow: 0 3px 8px rgb(0 0 0 / 15%);
 }
