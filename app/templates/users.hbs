@@ -24,5 +24,12 @@
   {{/each}}
 </div>
 <div class="container">
-  <button class="create-user-button">Create User</button>
+  <button class="create-user-button" type="button" {{on "click" this.toggleModal}}>Create User</button>
 </div>
+{{!-- modal for creating a new user --}}
+{{#if this.isModalOpen}}
+  <CreateUserModal @onClose={{this.toggleModal}} />
+{{/if}}
+
+{{outlet}}
+
