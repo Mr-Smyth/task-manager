@@ -1,3 +1,4 @@
+{{!-- app/templates/tasks.hbs --}}
 {{page-title "Tasks"}}
 
 <div class="container">
@@ -6,32 +7,32 @@
 
 <div class="container">
   <h2 class="unassigned-tasks-heading">Unassigned Tasks</h2>
-  {{#each @model.tasks.unassigned as |task|}}
-    <div class="task-box">
-      <div class="task-info">
-        <h2>{{task.title}}</h2>
-        <p class="description">{{task.description}}</p>
-        <p class="owner">Owner: {{task.user.name}} - {{task.user.description}}</p>
-      </div>
-      <div class="assign-user-container">
-        <UserSelector @users={{@model.users}} @task={{task}} @onUserAssign={{this.assignUser}} />
-      </div>
+  {{#each this.unassignedTasks as |task|}}
+  <div class="task-box  task-box-unassigned">
+    <div class="task-info">
+      <h2>{{task.title}}</h2>
+      <p class="description">{{task.description}}</p>
+      <p class="owner"><strong>Unassigned</strong></p>
     </div>
+    <div class="assign-user-container">
+      <UserSelector @users={{@model.users}} @task={{task}} @onUserAssign={{this.assignUser}} />
+    </div>
+  </div>
   {{/each}}
 
   <hr class="section-separator">
 
   <h2>Assigned Tasks</h2>
-  {{#each @model.tasks.assigned as |task|}}
-    <div class="task-box">
-      <div class="task-info">
-        <h2>{{task.title}}</h2>
-        <p class="description">{{task.description}}</p>
-        <p class="owner">Owner: {{task.user.name}} - {{task.user.description}}</p>
-      </div>
-      <div class="assign-user-container">
-        <UserSelector @users={{@model.users}} @task={{task}} @onUserAssign={{this.assignUser}} />
-      </div>
+  {{#each this.assignedTasks as |task|}}
+  <div class="task-box  task-box-assigned">
+    <div class="task-info">
+      <h2>{{task.title}}</h2>
+      <p class="description">{{task.description}}</p>
+      <p class="owner">Owner: {{task.user.name}} - {{task.user.description}}</p>
     </div>
+    <div class="assign-user-container">
+      <UserSelector @users={{@model.users}} @task={{task}} @onUserAssign={{this.assignUser}} />
+    </div>
+  </div>
   {{/each}}
 </div>
