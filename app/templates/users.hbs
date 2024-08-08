@@ -3,8 +3,7 @@
 <div class="container">
   <h1>Users</h1>
 </div>
-
-
+{{!-- User Container --}}
 <div class="container">
   {{#each @model as |user|}}
     <div class="user-box">
@@ -23,13 +22,32 @@
     </div>
   {{/each}}
 </div>
+
+{{!-- Create-User Button --}}
 <div class="container">
   <button class="create-user-button" type="button" {{on "click" this.toggleModal}}>Create User</button>
 </div>
-{{!-- modal for creating a new user --}}
+
+{{!-- Use reusable Modal for creating a new User --}}
 {{#if this.isModalOpen}}
-  <CreateUserModal @onClose={{this.toggleModal}} />
+  <Modal @onClose={{this.toggleModal}} @modalHeading="Create a New User">
+    {{!-- Form --}}
+    <form {{on "submit" this.createUser}} class="user-form">
+      <div class="form-group">
+        <label for="userName">User Name:</label>
+        <input id="userName" name="userName" type="text" required class="form-input">
+      </div>
+
+      <div class="form-group">
+        <label for="userDescription">Description:</label>
+        <input id="userDescription" name="userDescription" type="text" required class="form-input">
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="submit-button">Create</button>
+      </div>
+    </form>
+  </Modal>
 {{/if}}
 
-{{outlet}}
 
