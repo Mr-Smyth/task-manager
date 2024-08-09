@@ -25,29 +25,11 @@
 
 {{!-- Create-User Button --}}
 <div class="container">
-  <button class="create-user-button" type="button" {{on "click" this.toggleModal}}>Create User</button>
+<LinkTo @route="users.create-user" class="create-user-button">Create User</LinkTo>
 </div>
 
-{{!-- Use reusable Modal for creating a new User --}}
-{{#if this.isModalOpen}}
-  <Modal @onClose={{this.toggleModal}} @modalHeading="Create a New User">
-    {{!-- Form --}}
-    <form {{on "submit" this.createUser}} class="user-form">
-      <div class="form-group">
-        <label for="userName">User Name:</label>
-        <input id="userName" name="userName" type="text" required class="form-input">
-      </div>
+{{outlet}}
 
-      <div class="form-group">
-        <label for="userDescription">Description:</label>
-        <input id="userDescription" name="userDescription" type="text" required class="form-input">
-      </div>
 
-      <div class="form-actions">
-        <button type="submit" class="submit-button">Create</button>
-      </div>
-    </form>
-  </Modal>
-{{/if}}
 
 

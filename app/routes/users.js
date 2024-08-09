@@ -6,7 +6,6 @@ export default class UsersRoute extends Route {
   @service store;
   @service dataLoader;
 
-
   async model() {
     // Load the tasks and users concurrently
     await Promise.all([
