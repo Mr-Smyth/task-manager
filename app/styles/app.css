@@ -30,7 +30,7 @@ nav {
 }
 
 nav a {
-  color: #fff;
+  color: #faf9f6;
   text-decoration: none;
   margin-left: 10px;
   padding: 5px 10px;
@@ -40,6 +40,7 @@ nav a {
 
 nav a:hover {
   background-color: rgb(255 255 255 / 10%);
+  color: #fff;
 }
 
 /* User box */
@@ -51,7 +52,9 @@ nav a:hover {
   box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
   margin-bottom: 20px;
   padding: 20px;
-  transition: box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  transition:
+    box-shadow 0.2s ease-in-out,
+    background-color 0.2s ease-in-out;
 }
 
 .user-box:hover {
@@ -103,7 +106,9 @@ nav a:hover {
   box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
   margin-bottom: 20px;
   padding: 20px;
-  transition: box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  transition:
+    box-shadow 0.2s ease-in-out,
+    background-color 0.2s ease-in-out;
   position: relative; /* Add this */
 }
 
@@ -150,13 +155,13 @@ nav a:hover {
 
 /* Assign User Component */
 .unassigned-tasks-heading {
-  color: #8B0000;
+  color: #8b0000;
 }
 
 .section-separator {
   border: 0;
   border-top: 1px solid #ccc;
-  margin: 50px 50px;
+  margin: 50px;
 }
 
 .user-selector {
@@ -197,4 +202,143 @@ nav a:hover {
 
 .user-selector button:hover {
   background-color: #98741a;
+}
+
+/* Create User button */
+.create-user-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(131 197 132);
+  color: #faf9f6;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
+  text-decoration: none;
+  transition:
+    box-shadow 0.2s ease-in-out,
+    background-color 0.3s ease;
+}
+
+.create-user-button:hover {
+  background-color: #7ab63a;
+  color: #fff;
+  box-shadow: 0 3px 8px rgb(0 0 0 / 15%);
+}
+
+/* Create-User-Modal */
+
+/* This creates a full-screen backdrop with a semi-transparent black overlay. z-index keeps the backdrop behind the modal */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+/* The modal is centered on the screen and has a shadow for better visibility */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px 30px;
+  border-radius: 8px;
+  z-index: 101;
+  width: 500px;
+  max-width: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Modal styling */
+/* Aligns the header content with spacing between the title and the close button */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.modal-header h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #999;
+}
+
+.close-button:hover {
+  color: #333;
+}
+
+/* form layout */
+/* use flex to stack form elements vertically */
+.user-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.form-input:focus {
+  border-color: rgb(131 197 132);
+  outline: none;
+  box-shadow: 0 0 5px rgb(131 197 132);
+}
+
+/* Form Actions */
+/* Styled to match rest of site */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(131 197 132);
+  color: #faf9f6;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.2s ease-in-out;
+}
+
+.submit-button:hover {
+  background-color: #7ab63a;
+  color: #fff;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
 }

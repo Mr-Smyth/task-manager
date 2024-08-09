@@ -19,7 +19,7 @@ export default class TasksRoute extends Route {
 
     return {
       tasks,
-      users
+      users,
     };
   }
 }
