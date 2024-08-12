@@ -3,12 +3,12 @@
 <div class="container">
   <h1>Users</h1>
 </div>
-
+{{!-- User Container --}}
 <div class="container">
   {{#each @model as |user|}}
     <div class="user-box">
       <div class="user-info">
-        <h2>{{user.name}}</h2>
+        <h2>{{user.name}} - {{user.id}}</h2>
         <p class="description">{{user.description}}</p>
       </div>
       <div class="user-tasks">
@@ -22,3 +22,14 @@
     </div>
   {{/each}}
 </div>
+
+{{!-- Create-User Button --}}
+<div class="container">
+<LinkTo @route="users.create-user" class="create-user-button">Create User</LinkTo>
+</div>
+
+{{outlet}}
+
+
+
+
