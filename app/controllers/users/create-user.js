@@ -11,6 +11,11 @@ export default class UsersCreateUserController extends Controller {
     this.router.transitionTo('users');
   }
 
+  // setting the heading to be passed to the modal component
+  get modalHeading() {
+    return "Create a new User:";
+  }
+
   /* Simple method to get next available id */
   get newId() {
     // convert each id into a integer by getting the model which is the user model

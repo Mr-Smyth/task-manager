@@ -6,33 +6,35 @@
 </div>
 
 <div class="container">
-  <h2 class="unassigned-tasks-heading">Unassigned Tasks</h2>
+  <h2 class="unassigned-tasks-heading">Unassigned Tasks ({{this.unassignedTasks.length}})</h2>
   {{#each this.unassignedTasks as |task|}}
-  <div class="task-box  task-box-unassigned">
-    <div class="task-info">
-      <h2>{{task.title}}</h2>
-      <p class="description">{{task.description}}</p>
-      <p class="owner"><strong>Unassigned</strong></p>
+  {{!-- wrapping each task in a link --}}
+  <LinkTo @route="tasks.edit-task" @model={{task}} class="task-link">
+    <div class="task-box  task-box-unassigned">
+      <div class="task-info">
+        <h2>{{task.title}}</h2>
+        <p class="description">{{task.description}}</p>
+        <p class="owner"><strong>Unassigned</strong></p>
+      </div>
     </div>
-    <div class="assign-user-container">
-      <UserSelector @users={{@model.users}} @task={{task}} @onUserAssign={{this.assignUser}} />
-    </div>
-  </div>
+  </LinkTo>
   {{/each}}
 
   <hr class="section-separator">
 
-  <h2>Assigned Tasks</h2>
+  <h2>Assigned Tasks ({{this.assignedTasks.length}})</h2>
   {{#each this.assignedTasks as |task|}}
-  <div class="task-box  task-box-assigned">
-    <div class="task-info">
-      <h2>{{task.title}}</h2>
-      <p class="description">{{task.description}}</p>
-      <p class="owner">Owner: {{task.user.name}} - {{task.user.description}}</p>
+  {{!-- wrapping each task in a link --}}
+  <LinkTo @route="tasks.edit-task" @model={{task}} class="task-link">
+    <div class="task-box  task-box-assigned">
+      <div class="task-info">
+        <h2>{{task.title}}</h2>
+        <p class="description">{{task.description}}</p>
+        <p class="owner">Owner: {{task.user.name}} - {{task.user.description}}</p>
+      </div>
     </div>
-    <div class="assign-user-container">
-      <UserSelector @users={{@model.users}} @task={{task}} @onUserAssign={{this.assignUser}} />
-    </div>
-  </div>
+  </LinkTo>
   {{/each}}
 </div>
+
+{{outlet}}

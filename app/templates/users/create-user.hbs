@@ -2,9 +2,9 @@
 {{page-title "Create User"}}
 
 {{!-- Use reusable Modal for creating a new User --}}
-  <Modal @onClose={{this.closeModal}} @modalHeading="Create a New User">
+  <Modal @onClose={{this.closeModal}} @modalHeading={{this.modalHeading}} @modalHeadingClass="modal-header" @modalClass="modal modal-user">
     {{!-- Form --}}
-    <form {{on "submit" this.createUser}} class="user-form">
+    <form {{on "submit" this.createUser}} class="modal-form-users">
       <div class="form-group">
         <label for="userName">User Name:</label>
         <input id="userName" name="userName" type="text" required class="form-input">
@@ -16,7 +16,7 @@
       </div>
 
       <div class="form-actions">
-        <button type="submit" class="submit-button">Create</button>
+        <button type="submit" class="default-button green-button">Create</button>
       </div>
     </form>
   </Modal>
