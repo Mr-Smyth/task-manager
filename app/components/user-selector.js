@@ -11,7 +11,10 @@ export default class UserSelectorComponent extends Component {
   constructor() {
     super(...arguments);
     // Set the selected user ID based on the provided task
-    this.selectedUserId = this.args.task.user.id;
+    // Checking if this exists - this is where my test breaks down - as its not getting args
+    this.selectedUserId = this.args.task.user.id
+      ? this.args.task.user.id
+      : null;
   }
 
   @action
@@ -29,9 +32,9 @@ export default class UserSelectorComponent extends Component {
   }
 
   get userOptions() {
+    // I want to show the option to set as unassigned when a task is already assigned else show unassigned
     return this.selectedUserId
-      ? // I want to show the option to set as unassigned when a task is already assigned else show unassigned
-        [{ id: null, name: 'Set as Unassigned' }, ...this.args.users]
+      ? [{ id: null, name: 'Set as Unassigned' }, ...this.args.users]
       : [{ id: null, name: 'Unassigned' }, ...this.args.users];
   }
 }

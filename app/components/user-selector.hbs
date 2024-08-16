@@ -2,14 +2,14 @@
 <div class="user-selector">
   <form {{on "submit" this.handleSubmit}}>
     <label for="assign-user">Select a user:</label>
-    <select id="assign-user" name="assign-user" value={{this.selectedUserId}} {{on "change" this.handleChange}}>
+    <select id="assign-user" name="assign-user" value={{this.selectedUserId}} {{on "change" this.handleChange}} data-test-selector="selector">
       {{#each this.userOptions as |user|}}
       {{!-- Ensure the currently selected user is the current user --}}
-      <option value={{user.id}} selected={{eq user.id this.selectedUserId}}>
+      <option value={{user.id}} selected={{eq user.id this.selectedUserId}} data-test-id={{user.id}}>
         {{user.name}}
       </option>
       {{/each}}
     </select>
-    <button type="submit">Assign user</button>
+    <button data-test-us-button="has assign user text" type="submit">Assign user</button>
   </form>
 </div>
