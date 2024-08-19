@@ -1,0 +1,35 @@
+<Modal @onClose={{this.closeModal}} @modalHeading={{this.modalHeading}} @modalClass="modal modal-edit">
+    {{!-- Form --}}
+    <form class="modal-form-tasks" {{on "submit" this.editTask}}>
+        {{!-- Left side of Modal --}}
+        <div class="modal-left">
+            <div class="form-group">
+                <label for="TaskName">Task Name:</label>
+                <input id="taskName" name="taskName" type="text" value={{this.model.title}} required
+                    class="form-input" />
+            </div>
+
+            <div class="form-group">
+                <label for="taskDescription">Task Description:</label>
+                <textarea id="taskDescription" name="taskDescription" required
+                    class="form-input form-text-area">{{this.model.description}}</textarea>
+            </div>
+        </div>
+        {{!-- Right side of Modal --}}
+        <div class="modal-right">
+            <div class="assign-user-container">
+                <UserSelector @users={{this.users}} @task={{this.model}} @onUserAssign={{this.assignUser}} />
+            </div>
+            <div>
+                <p>Set Priority - here</p>
+            </div>
+            <div>
+                <p>Set Status - here</p>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="default-button green-button">Save</button>
+            </div>
+        </div>
+    </form>
+</Modal>
