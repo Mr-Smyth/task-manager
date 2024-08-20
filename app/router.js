@@ -12,5 +12,6 @@ Router.map(function () {
   });
   this.route('users', function () {
     this.route('create-user');
+    this.route('user-details');
   });
 });
