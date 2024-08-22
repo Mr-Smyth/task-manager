@@ -1,6 +1,6 @@
 import { module, test } from 'qunit'; // Import QUnit testing functions
 import { setupRenderingTest } from 'task-manager/tests/helpers'; // Import helper for setting up rendering tests
-import { render, select, triggerEvent } from '@ember/test-helpers'; // Import helpers for rendering and simulating interactions
+import { render, select, triggerEvent, pauseTest } from '@ember/test-helpers'; // Import helpers for rendering and simulating interactions
 import { hbs } from 'ember-cli-htmlbars'; // Import hbs helper for using HTMLBars templates in tests
 
 module('Integration | Component | user-selector', function (hooks) {
@@ -63,6 +63,8 @@ module('Integration | Component | user-selector', function (hooks) {
     await render(
       hbs`<UserSelector @users={{this.users}} @task={{this.model}} @onUserAssign={{this.assignUser}}/>`,
     );
+
+    // await pauseTest();
 
     // Check the rendered output
     // Check if the button text is 'Assign user'

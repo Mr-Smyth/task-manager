@@ -1,3 +1,7 @@
+<details>
+<summary>Ember default Readme stuff</summary>
+<br>
+
 # task-manager
 
 This README outlines the details of collaborating on this Ember application.
@@ -54,3 +58,35 @@ Specify what it takes to deploy your app.
 * Development Browser Extensions
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+
+</details>
+
+# Task-Manager
+
+
+## UI
+
+### Structure
+- Tasks: 
+  - Task list: Full page clickable listing of all tasks, Reachable as landing page or by clicking the Tasks link in Nav Bar.
+  - Task Details: component - Large modal with edit functionality and user assignment, Reachable by clicking any of the tasks on the tasks page
+- Users: 
+  - User List: Full page clickable listing of all users, Reachable by clicking the Users link in Nav Bar.
+  - User Details: dropdown display of users details including description and number of tasks currently assigned to that user. Reachable by clicking on the details dropdown link on each user in the users screen
+
+
+## UX
+
+
+
+## STYLING
+
+
+
+### WIREFRAMES
+
+
+
+
+## TESTING
+
