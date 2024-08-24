@@ -42,20 +42,24 @@ module('Integration | Component | user-selector', function (hooks) {
     // Set up component properties and action handlers
     // Provide mock users & tasks to the component
     this.setProperties({
-      users: mockUsers, 
+      users: mockUsers,
       model: mockTask,
       // Define the action handler for user assignment
       assignUser: (taskId, userId) => {
         // Assertions within the action to verify the correct task ID and user ID
-        
+
         // Assert that the task ID passed to the action matches the mock task ID
-        assert.strictEqual(taskId, mockTask.id,
+        assert.strictEqual(
+          taskId,
+          mockTask.id,
           `assignUser action receives the correct task ID ${taskId}`,
-        ); 
+        );
         // Assert that the user ID passed to the action is '1002'
-        assert.strictEqual(userId, '1002', 
+        assert.strictEqual(
+          userId,
+          '1002',
           `assignUser action receives the correct user ID ${userId}`,
-        ); 
+        );
       },
     });
 
@@ -73,15 +77,20 @@ module('Integration | Component | user-selector', function (hooks) {
       .hasText('Assign user', 'The user sees the correct button Text.');
 
     // Check if there are 4 options in the select element (3 users + 1 unassigned option)
-    assert.dom('select[data-test-selector] option').exists(
-      { count: 4 },
-      'Component shows the correct number of user options: 4'
-    );
+    assert
+      .dom('select[data-test-selector] option')
+      .exists(
+        { count: 4 },
+        'Component shows the correct number of user options: 4',
+      );
 
     // Check that the initially selected user is correctly set in the dropdown
     assert
       .dom('select[data-test-selector]')
-      .hasValue('1001', 'The initially selected user is correctly displayed: 1001');
+      .hasValue(
+        '1001',
+        'The initially selected user is correctly displayed: 1001',
+      );
 
     // Simulate user interactions
     // Select 'User Two' from the dropdown (ID '1002')

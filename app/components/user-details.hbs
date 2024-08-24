@@ -1,1 +1,33 @@
-{{yield}}
+<div class="info-backdrop" {{on "click" this.args.onClose}}></div>
+<div class="info-panel">
+  <div class="info-container">
+    <div class="info-heading">
+      <h2>User Details</h2>
+      <button class="small-close-button" type="button" {{on "click" this.args.onClose}}>×</button>
+    </div>
+    <div class="info-user-details-box">
+      <div class="info-section">
+        <h3 class="info-section-title">User Name</h3>
+        <p class="info-section-content" data-test-userName="username">{{@user.name}}</p>
+      </div>
+      <div class="info-section">
+        <h3 class="info-section-title">User Details</h3>
+        <p class="info-section-content user-description" data-test-userDescription="userDescription">
+          {{@user.description}}</p>
+      </div>
+      <div class="info-user-tasks">
+        <h3 class="info-section-title" data-test-numTasks="userNumTasks">User Tasks: {{@user.tasks.length}}</h3>
+        <ul class="info-task-list" data-test-taskList="userTask">
+          {{#each @user.tasks as |task|}}
+          <li class="task-item" data-test-taskList="userTask">{{task.title}}</li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+    <div class="info-actions">
+      <button class="default-button orange-button" type="button">Edit</button>
+      <button class="default-button red-button" type="button">Delete</button>
+      <button class="default-button green-button" type="button" {{on "click" this.args.onClose}}>Close</button>
+    </div>
+  </div>
+</div>

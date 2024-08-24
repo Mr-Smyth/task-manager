@@ -4,7 +4,7 @@
        "id": "1001",
        "name": "Billy Hughes",
        "description": "Engineer",
-       "taskIds": []
+       "taskIds": ["7","8"]
      },
      {
        "id": "1002",
@@ -28,7 +28,7 @@
        "id": "1005",
        "name": "Stephanie Doe",
        "description": "Team Leader",
-       "taskIds": []
+       "taskIds": ["5","6"]
      }
    ]
  }

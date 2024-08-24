@@ -1,2 +1,3 @@
 {{page-title "UserDetails"}}
-{{outlet}}
+{{!-- call the slide out user-details component --}}
+<UserDetails @user={{this.model}}  @onClose={{this.closeUserDetails}} />
