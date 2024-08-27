@@ -18,9 +18,9 @@ module('Integration | Component | user-details', function (hooks) {
       ],
     };
 
-    this.set('user', mockUser);
+    this.set('model', mockUser);
 
-    await render(hbs`<UserDetails @user={{user}}/>`);
+    await render(hbs`<UserDetails @user={{this.model}}/>`);
 
     // Check if the user name is displayed
     assert
@@ -35,7 +35,7 @@ module('Integration | Component | user-details', function (hooks) {
     // Check if the number of tasks assigned text is correct
     assert
       .dom('[data-test-numTasks]')
-      .hasText('Number of tasks: 2', 'The number of tasks is shown correctly.');
+      .hasText('User Tasks: 2', 'The number of tasks is shown correctly.');
 
     // Check if the <li> elements contain the count and names of the tasks
     assert

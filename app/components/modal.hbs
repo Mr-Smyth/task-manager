@@ -2,18 +2,15 @@
 {{!-- Reusable modal --}}
 {{!-- Full width backdrop --}}
 <div class="modal-backdrop" {{on "click" this.closeModal}}></div>
-
 {{!-- Modal General Markup --}}
 <div class={{@modalClass}}>
-  <div class="modal-header">
-    <h2>{{@modalHeading}}</h2>
-    {{!-- Make button as 'X' --}}
-    <button class="close-button" type="button" {{on "click" this.closeModal}}>&times;</button>
-  </div>
-  <div>
-    {{!-- Insert content from parent here --}}
-    {{yield}}
-  </div>
+    <div class="modal-header">
+        <h2>{{@modalHeading}}</h2>
+        {{!-- Make button as 'X' --}}
+        <button class="small-close-button" type="button" {{on "click" this.closeModal}}>&times;</button>
+    </div>
+    <div>
+        {{!-- Insert content from parent here --}}
+        {{yield}}
+    </div>
 </div>
-
-

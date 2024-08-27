@@ -12,6 +12,6 @@ Router.map(function () {
   });
   this.route('users', function () {
     this.route('create-user');
-    this.route('user-details');
+    this.route('user-details', { path: '/details/:user_id' });
   });
 });

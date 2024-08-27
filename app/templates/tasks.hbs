@@ -25,7 +25,7 @@
   <h2>Assigned Tasks ({{this.assignedTasks.length}})</h2>
   {{#each this.assignedTasks as |task|}}
   {{!-- wrapping each task in a link --}}
-  <LinkTo @route="tasks.edit-task" @model={{task}} class="task-link">
+  <LinkTo @route="tasks.edit-task" @model={{task}} class="link-general">
     <div class="task-box  task-box-assigned">
       <div class="task-info">
         <h2>{{task.title}}</h2>
