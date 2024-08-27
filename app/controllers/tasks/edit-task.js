@@ -36,23 +36,15 @@ export default class TasksEditTaskController extends Controller {
     let taskName = event.target.taskName.value;
     let taskDescription = event.target.taskDescription.value;
 
-    // Update the model with new values
+    // Update the task with new values
     this.model.title = taskName;
     this.model.description = taskDescription;
 
+    // update the user with the task from the option list component selector
+    let selectedUserId = event.target.querySelector('#assign-user').value;
+    let assignedUser = this.users.find((user) => user.id === selectedUserId);
+    this.model.set('user', assignedUser);
+    console.log(selectedUserId, assignedUser);
     this.closeModal();
-  }
-
-  @action
-  // take the taskId, userId and find the correct task and user. 
-  // Then tell Ember Data that the task now belongs to the selected user.
-  // Ember Data automatically updates the user's tasks relationship to 
-  // include the task because of the inverse relationship defined in the model.
-  assignUser(taskId, userId) {
-    let task = this.tasks.find((task) => task.id === taskId);
-    let user = this.users.find((user) => user.id === userId);
-
-    // no checks needed here for null values as a task not linked wont have a user_id - this will be a valid case so we just set
-    task.set('user', user);
   }
 }

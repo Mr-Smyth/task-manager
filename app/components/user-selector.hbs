@@ -1,6 +1,6 @@
 {{!-- app/components/user-selector.hbs --}}
 <div class="user-selector">
-  <form {{on "submit" this.handleSubmit}}>
+  <form>
     <label for="assign-user">Select a user:</label>
     <select id="assign-user" name="assign-user" value={{this.selectedUserId}} {{on "change" this.handleChange}} data-test-selector="selector">
       {{#each this.userOptions as |user|}}
@@ -10,6 +10,5 @@
       </option>
       {{/each}}
     </select>
-    <button data-test-us-button="has assign user text" type="submit">Assign user</button>
   </form>
 </div>
