@@ -19,16 +19,9 @@ export default class UserSelectorComponent extends Component {
 
   @action
   handleChange(event) {
-    // Update the selected user ID when the selection changes
+    // Update the selected user ID when the selection changes - store it locally until we grab it in edit-task controller
     this.selectedUserId = event.target.value;
-  }
 
-  @action
-  handleSubmit(event) {
-    // Prevent the default form submission behavior
-    event.preventDefault();
-    // Call the onUserAssign function which is up in the route tasks controller with the task ID and selected user ID
-    this.args.onUserAssign(this.args.task.id, this.selectedUserId);
   }
 
   get userOptions() {
