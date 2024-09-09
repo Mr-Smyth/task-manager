@@ -12,8 +12,16 @@ export default class DataLoaderService extends Service {
    */
   async loadUsers() {
     // Fetch user data from the local JSON file
-    let response = await fetch('api/users.json');
+    // let response = await fetch('api/users.json');
+
+    // fetch Users from server
+    let response = await fetch(
+      'http://localhost:3000/task-manager-data/api/users',
+    );
     let userData = await response.json();
+
+    // Log userData to inspect its structure
+    console.log('Fetched userData:', userData);
 
     // Map the fetched user data to Ember Data models
     return userData.users.map((user) => {
@@ -29,7 +37,8 @@ export default class DataLoaderService extends Service {
               id: user.id,
               type: 'user',
               attributes: {
-                name: user.name,
+                // name: user.name,
+                name: `${user.first_name} ${user.last_name}`,
                 description: user.description,
               },
               relationships: {
