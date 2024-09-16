@@ -4,64 +4,13 @@ import { inject as service } from '@ember/service';
 
 export default class DataLoaderService extends Service {
   @service store;
+  
+  /* The aim is to make this file redundant - so far i have removed the loadUsers
+  as now getting from backend using serializer and adaptor setup
+  currently we are still pulling tasks from local file at memonet but will move to a serializer / adaptor 
+  setup once implemented in the backend */
 
-  /**
-   * Loads user data from local JSON file.
-   * Checks if each user already exists in the store; creates a new record if not.
-   * Returns an array of user records (Ember Data models).
-   */
-  async loadUsers() {
-    // Fetch user data from the local JSON file
-    // let response = await fetch('api/users.json');
-
-    // fetch Users from server
-    let response = await fetch(
-      'http://localhost:3000/task-manager-data/api/users',
-    );
-    let userData = await response.json();
-
-    // Log userData to inspect its structure
-    console.log('Fetched userData:', userData);
-
-    // Map the fetched user data to Ember Data models
-    return userData.users.map((user) => {
-      // Check if the user already exists in the store
-      let existingUser = this.store.peekRecord('user', user.id);
-
-      // If the user doesn't exist, create a new record
-      if (!existingUser) {
-        return this.store.push({
-          data: [
-            // **** Why have this data object inside a list
-            {
-              id: user.id,
-              type: 'user',
-              attributes: {
-                // name: user.name,
-                name: `${user.first_name} ${user.last_name}`,
-                description: user.description,
-              },
-              relationships: {
-                tasks: {
-                  data: user.taskIds.map((taskId) => {
-                    return {
-                      id: taskId,
-                      type: 'task',
-                    };
-                  }),
-                },
-              },
-            },
-          ],
-        });
-      } else {
-        // If the user exists, return the existing record
-        return existingUser;
-      }
-    });
-  }
-
-  /**
+  /* *
    * Loads task data from local JSON file.
    * Checks if each task already exists in the store; pushes if not.
    * Returns an array of task records (Ember Data models).

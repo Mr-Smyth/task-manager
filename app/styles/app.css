@@ -211,7 +211,7 @@ nav a:hover {
   min-width: 120px;
   border: none;
   border-radius: 4px;
-  background-color: rgb(180, 216, 234);
+  background-color: rgb(180 216 234);
   color: #faf9f6;
   font-size: 16px;
   cursor: pointer;
@@ -249,8 +249,6 @@ nav a:hover {
   box-shadow: 0 3px 8px rgb(0 0 0 / 15%);
 }
 
-
-
 /* Create-User-Modal */
 
 /* This creates a full-screen backdrop with a semi-transparent black overlay. z-index keeps the backdrop behind the modal */
@@ -260,7 +258,7 @@ nav a:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgb(0 0 0 / 60%);
   z-index: 100;
 }
 
@@ -332,6 +330,7 @@ nav a:hover {
 }
 
 /* Right side of the modal (30% width) */
+
 /* Space content from top to bottom */
 .modal-right {
   flex: 3;
@@ -339,7 +338,7 @@ nav a:hover {
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
-  justify-content: space-between; 
+  justify-content: space-between;
   overflow: auto;
 }
 
@@ -368,7 +367,8 @@ nav a:hover {
   display: block;
 }
 
-.form-input, .form-text-area {
+.form-input,
+.form-text-area {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -378,7 +378,8 @@ nav a:hover {
   box-shadow: inset 0 2px 5px rgb(0 0 0 / 5%);
 }
 
-.form-input:focus, .form-text-area:focus {
+.form-input:focus,
+.form-text-area:focus {
   border-color: rgb(131 197 132);
   outline: none;
   box-shadow: 0 0 5px rgb(131 197 132);
@@ -389,14 +390,13 @@ nav a:hover {
 }
 
 /* Form Actions */
+
 /* Push the Save button to the right of its container */
 .form-actions {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 }
-
-
 
 /* User-details */
 .info-backdrop {
@@ -405,7 +405,7 @@ nav a:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgb(0 0 0 / 50%);
   z-index: 999;
 }
 
@@ -417,7 +417,7 @@ nav a:hover {
   width: 600px;
   height: 100%;
   background: #fff;
-  box-shadow: -3px 0 5px rgba(0, 0, 0, 0.3);
+  box-shadow: -3px 0 5px rgb(0 0 0 / 30%);
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -452,11 +452,10 @@ nav a:hover {
   margin: 0;
 }
 
-
 .info-user-details-box {
   background-color: #f9f9f9;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
   padding: 20px;
 }
 
@@ -475,8 +474,6 @@ nav a:hover {
   color: rgb(131 197 132);
   margin-bottom: 10px;
 }
-
-
 
 /* Task Info */
 .task-info {
@@ -501,11 +498,9 @@ nav a:hover {
   color: inherit;
 }
 
-
 /* Edit and Delete Buttons */
 .info-actions {
   display: flex;
   justify-content: space-between;
   margin-top: auto;
 }
-
