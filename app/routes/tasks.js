@@ -7,15 +7,14 @@ export default class TasksRoute extends Route {
   @service dataLoader;
 
   async model() {
-    // Load the tasks and users concurrently
-    await Promise.all([
-      this.dataLoader.loadUsers(),
-      this.dataLoader.loadTasks(),
-    ]);
+    // Load the tasks
+    await this.dataLoader.loadTasks();
 
     // Return all tasks and users as is
+    // getting the tasks locally from dataLoader
+    // getting the users from the store
     let tasks = this.store.peekAll('task');
-    let users = this.store.peekAll('user');
+    let users = this.store.findAll('user');
 
     return {
       tasks,

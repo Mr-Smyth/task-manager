@@ -8,17 +8,17 @@
     <div class="info-user-details-box">
       <div class="info-section">
         <h3 class="info-section-title">User Name</h3>
-        <p class="info-section-content" data-test-userName="username">{{@user.name}}</p>
+        <p class="info-section-content" data-test-userName="username">{{this.args.user.name}} / id: ({{this.args.user.id}})</p>
       </div>
       <div class="info-section">
         <h3 class="info-section-title">User Details</h3>
         <p class="info-section-content user-description" data-test-userDescription="userDescription">
-          {{@user.description}}</p>
+          {{this.args.user.description}}</p>
       </div>
       <div class="info-user-tasks">
-        <h3 class="info-section-title" data-test-numTasks="userNumTasks">User Tasks: {{@user.tasks.length}}</h3>
+        <h3 class="info-section-title" data-test-numTasks="userNumTasks">User Tasks: {{this.args.user.tasks.length}}</h3>
         <ul class="info-task-list" data-test-taskList="userTask">
-          {{#each @user.tasks as |task|}}
+          {{#each this.args.user.tasks as |task|}}
           <li class="task-item" data-test-taskList="userTask">{{task.title}}</li>
           {{/each}}
         </ul>
@@ -26,7 +26,7 @@
     </div>
     <div class="info-actions">
       <button class="default-button orange-button" type="button">Edit</button>
-      <button class="default-button red-button" type="button">Delete</button>
+      <button class="default-button red-button" type="button" {{on "click" this.args.onDelete}}>Delete</button>
       <button class="default-button green-button" type="button" {{on "click" this.args.onClose}}>Close</button>
     </div>
   </div>
