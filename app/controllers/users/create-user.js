@@ -34,7 +34,8 @@ export default class UsersCreateUserController extends Controller {
 
     // Create a new user record and save it
     let newUser = this.store.createRecord('user', {
-      name: `${userFirstName} ${userLastName}`,
+      firstName: userFirstName,
+      lastName: userLastName,
       description: userDescription,
       taskIds: userTaskIds,
     });
