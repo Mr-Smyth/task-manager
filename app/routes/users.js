@@ -8,7 +8,17 @@ export default class UsersRoute extends Route {
 
   async model() {
     // Retrieve all users from the store
-    let users = this.store.findAll('user');
+    let users = await this.store.findAll('user');
+
+    // Log user attributes for better inspection
+    users.forEach(user => {
+      console.log('User:', {
+        id: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        description: user.description,
+      });
+    });
 
     return users;
   }
