@@ -13,7 +13,7 @@ export default class UsersCreateUserController extends Controller {
 
   // setting the heading to be passed to the modal component
   get modalHeading() {
-    return "Create a new User:";
+    return 'Create a new User:';
   }
 
   @action
@@ -28,7 +28,7 @@ export default class UsersCreateUserController extends Controller {
 
     // Basic validation
     if (!userFirstName || !userLastName) {
-      alert("First name and Last name are required.");
+      alert('First name and Last name are required.');
       return;
     }
 
@@ -41,10 +41,15 @@ export default class UsersCreateUserController extends Controller {
     });
 
     // Save then reroute to users with closeModal()
-    newUser.save().then(() => {
-      {this.closeModal()};
-    }).catch((error) => {
-      console.error("Failed to create the new user: ", error)
-    });
+    newUser
+      .save()
+      .then(() => {
+        {
+          this.closeModal();
+        }
+      })
+      .catch((error) => {
+        console.error('Failed to create the new user: ', error);
+      });
   }
 }
