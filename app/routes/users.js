@@ -3,23 +3,42 @@ import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 
 export default class UsersRoute extends Route {
+  // Get Services required
   @service store;
-  @service dataLoader;
+  @service('requests/user/get-user-request') requestsUserGetUserRequestService;
 
   async model() {
-    // Retrieve all users from the store
-    let users = await this.store.findAll('user');
+    let users = this.store.peekAll('user');
 
-    // Log user attributes for better inspection
-    users.forEach(user => {
-      console.log('User:', {
+    if (users.length > 0) {
+      // Return users from the store if they exist
+
+      // Just to log the users for viewing purposes - this can be removed once completed
+      users.forEach((user) => {
+        console.log('Users In Store:', {
+          id: user.id,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          description: user.description,
+        });
+      });
+
+      return users;
+    }
+
+    // otherwise get them from the API
+    let getApiUsers = await this.requestsUserGetUserRequestService.getUsers();
+    users = getApiUsers.content;
+
+    // Just to log the users for viewing purposes - this can be removed once completed
+    users.forEach((user) => {
+      console.log('Users From API:', {
         id: user.id,
         firstName: user.firstName,
         lastName: user.lastName,
         description: user.description,
       });
     });
-
     return users;
   }
 }
