@@ -1,11 +1,11 @@
-// app/services/requests/user/get-user-request.js
+// app/services/requests/user/user-service.js
 import Service, { inject as service } from '@ember/service';
 import RequestManager from '@ember-data/request';
 import Fetch from '@ember-data/request/fetch';
 
-export default class RequestsUserGetUserRequestService extends Service {
+export default class RequestsUserUserService extends Service {
   @service store;
-  @service('handlers/user/get-user-handler') getUserHandler;
+  @service('handlers/user/get-users-handler') getUserHandler;
 
   constructor() {
     super(...arguments);

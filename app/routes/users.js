@@ -5,7 +5,7 @@ import { inject as service } from '@ember/service';
 export default class UsersRoute extends Route {
   // Get Services required
   @service store;
-  @service('requests/user/get-user-request') requestsUserGetUserRequestService;
+  @service('requests/user/user-service') requestsUserUserService;
 
   async model() {
     let users = this.store.peekAll('user');
@@ -27,7 +27,7 @@ export default class UsersRoute extends Route {
     }
 
     // otherwise get them from the API
-    let getApiUsers = await this.requestsUserGetUserRequestService.getUsers();
+    let getApiUsers = await this.requestsUserUserService.getUsers();
     users = getApiUsers.content;
 
     // Just to log the users for viewing purposes - this can be removed once completed
