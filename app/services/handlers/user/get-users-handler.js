@@ -23,8 +23,8 @@ export default class HandlersUserGetUsersHandler extends Service {
               firstName: user.first_name,
               lastName: user.last_name,
               description: user.description,
-            }
-          }
+            },
+          },
         };
 
         // and if exists or not we update the store

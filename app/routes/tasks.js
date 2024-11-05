@@ -4,21 +4,18 @@ import { inject as service } from '@ember/service';
 
 export default class TasksRoute extends Route {
   @service store;
-  @service dataLoader;
+  @service('requests/task/task-service') requestsTaskTaskService;
+  @service('requests/user/user-service') requestsUserUserService;
 
   async model() {
-    // Load the tasks
-    await this.dataLoader.loadTasks();
-
-    // Return all tasks and users as is
-    // getting the tasks locally from dataLoader
-    // getting the users from the store
+    // Fetch users and tasks from the API each time
+    await this.requestsTaskTaskService.getTasks();
+    await this.requestsUserUserService.getUsers();
+  
+    // Retrieve the latest data from the store (now populated with API data)
     let tasks = this.store.peekAll('task');
-    let users = this.store.findAll('user');
-
-    return {
-      tasks,
-      users,
-    };
-  }
+    let users = this.store.peekAll('user');
+  
+    return { tasks, users };
+  }  
 }
