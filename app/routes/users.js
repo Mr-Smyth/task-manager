@@ -5,11 +5,11 @@ import { inject as service } from '@ember/service';
 export default class UsersRoute extends Route {
   // Get Services required
   @service store;
-  @service('requests/user/user-service') requestsUserUserService;
+  @service('requests/user/user-service') requestUserService;
 
   async model() {
     // Fetch users from the API each time
-    await this.requestsUserUserService.getUsers();
+    await this.requestUserService.getUsers();
   
     // Retrieve the latest data from the store (now populated with API data)
     let users = this.store.peekAll('user');
