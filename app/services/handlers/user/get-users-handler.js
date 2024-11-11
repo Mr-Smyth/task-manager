@@ -1,5 +1,6 @@
 // app/services/handlers/user/get-users-handler.js
 import Service, { inject as service } from '@ember/service';
+import { normalizeUserToJsonAPIPayload } from '../../../utils/normalize-to-json-api';
 
 export default class HandlersUserGetUsersHandler extends Service {
   @service store;
@@ -8,39 +9,15 @@ export default class HandlersUserGetUsersHandler extends Service {
     const response = await next(context.request);
 
     // Handling the GET response and normalizing data for the store
-
-    // Check if the response contains an array of users - which it should
     if (Array.isArray(response.content.users)) {
       response.content.users.forEach((user) => {
-        let existingUser = this.store.peekRecord('user', String(user.id));
-
-        // using push - so the store will expect the correct format - setting up userRecord to be the correct format
-        const userRecord = {
-          data: {
-            id: String(user.id),
-            type: 'user',
-            attributes: {
-              firstName: user.first_name,
-              lastName: user.last_name,
-              description: user.description,
-            }
-          }
-        };
-
-        // and if exists or not we update the store
-        if (!existingUser) {
-          this.store.push(userRecord);
-        } else {
-          existingUser.setProperties({
-            firstName: user.first_name,
-            lastName: user.last_name,
-            description: user.description,
-          });
-        }
+        const userRecord = normalizeUserToJsonAPIPayload(user);
+        // Push the user record into the store, updating if it exists
+        this.store.push(userRecord);
       });
     }
-    // Return and log users from the store
-    const usersInStore = this.store.peekAll('user');
-    return usersInStore;
+
+    // Return users from the store
+    return this.store.peekAll('user');
   }
 }
