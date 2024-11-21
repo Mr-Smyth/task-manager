@@ -10,7 +10,8 @@ module('Integration | Component | user-details', function (hooks) {
     // Create mock user data
     let mockUser = {
       id: '1001',
-      name: 'User One',
+      firstName: 'User',
+      lastName: 'One',
       description: 'user-one description',
       tasks: [
         { id: '1', title: 'Task 1' },
@@ -18,9 +19,14 @@ module('Integration | Component | user-details', function (hooks) {
       ],
     };
 
+    // Define the onClose and onDelete actions for the test
+    this.set('onClose', () => {});
+    this.set('onDelete', () => {});
+
+    // Pass the user model, onClose, and onDelete actions to the component
     this.set('model', mockUser);
 
-    await render(hbs`<UserDetails @user={{this.model}}/>`);
+    await render(hbs`<UserDetails @user={{this.model}} @onClose={{this.onClose}} @onDelete={{this.onDelete}} />`);
 
     // Check if the user name is displayed
     assert
