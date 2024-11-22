@@ -5,6 +5,13 @@
   <h1>Tasks</h1>
 </div>
 
+{{!-- Create-Task Button --}}
+<div class="container">
+  <LinkTo @route="tasks.create-task" class="default-button green-button">Create Task</LinkTo>
+</div>
+
+<hr class="section-separator">
+
 <div class="container">
   <h2 class="unassigned-tasks-heading">Unassigned Tasks ({{this.unassignedTasks.length}})</h2>
   {{#each this.unassignedTasks as |task|}}

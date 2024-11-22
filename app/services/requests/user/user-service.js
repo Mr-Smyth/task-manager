@@ -14,6 +14,13 @@ export default class RequestsUserUserService extends Service {
     this.manager.use([this.getUserHandler, this.createUserHandler, Fetch]);
   }
 
+  /**
+   * Fetches all users from the backend API.
+   * This method performs a GET request to retrieve the list of users.
+   *
+   * @returns {Promise} A promise that resolves to the response containing the users data.
+   */
+
   async getUsers() {
     return this.manager.request({
       url: 'http://localhost:3000/task-manager-data/api/users',
@@ -21,11 +28,19 @@ export default class RequestsUserUserService extends Service {
     });
   }
 
+  /**
+   * Creates a new user with the provided details.
+   * This method sends a POST request to create a new user.
+   *
+   * @param {Object} user - The user object containing the information for the new user.
+   * @returns {Promise} A promise that resolves to the response of the POST request.
+   */
+
   async createUser(user) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json'); // Set the request content type to JSON
 
-    // Send a PATCH request to update the task with new details
+    // Send a PATCH request to create the new user
     return this.manager.request({
       url: `http://localhost:3000/task-manager-data/api/users`,
       method: 'POST',
