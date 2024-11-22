@@ -6,13 +6,14 @@ import Fetch from '@ember-data/request/fetch';
 export default class RequestsTaskTaskServiceService extends Service {
   @service store;
   @service('handlers/task/get-tasks-handler') getTaskHandler;
+  @service('handlers/task/update-tasks-handler') updateTaskHandler;
 
   constructor() {
     super(...arguments);
     // Initialize RequestManager to manage HTTP requests
     this.manager = new RequestManager();
     // Use custom handler and Fetch middleware for request processing
-    this.manager.use([this.getTaskHandler, Fetch]);
+    this.manager.use([this.getTaskHandler, this.updateTaskHandler, Fetch]);
   }
 
   /**
