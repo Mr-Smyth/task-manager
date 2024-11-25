@@ -7,11 +7,17 @@ export default class RequestsUserUserService extends Service {
   @service store;
   @service('handlers/user/get-users-handler') getUserHandler;
   @service('handlers/user/create-user-handler') createUserHandler;
+  @service('handlers/user/update-user-handler') updateUserHandler;
 
   constructor() {
     super(...arguments);
     this.manager = new RequestManager();
-    this.manager.use([this.getUserHandler, this.createUserHandler, Fetch]);
+    this.manager.use([
+      this.getUserHandler,
+      this.createUserHandler,
+      this.updateUserHandler,
+      Fetch,
+    ]);
   }
 
   /**
@@ -44,6 +50,30 @@ export default class RequestsUserUserService extends Service {
     return this.manager.request({
       url: `http://localhost:3000/task-manager-data/api/users`,
       method: 'POST',
+      body: JSON.stringify({
+        first_name: user.firstName,
+        last_name: user.lastName,
+        description: user.description,
+      }),
+      headers: headers,
+    });
+  }
+
+  /**
+   * Updates an existing user with the provided details.
+   * This method sends a PUT request to update the user's details.
+   *
+   * @param {Object} user - The user object containing the updated user information.
+   * @returns {Promise} A promise that resolves to the response of the PUT request.
+   */
+  async updateUser(user) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json'); // Set the request content type to JSON
+
+    // Send a PUT request to update the existing user
+    return this.manager.request({
+      url: `http://localhost:3000/task-manager-data/api/users/${user.id}`,
+      method: 'PATCH', // Using PUT to update the resource
       body: JSON.stringify({
         first_name: user.firstName,
         last_name: user.lastName,

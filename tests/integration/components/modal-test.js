@@ -9,11 +9,11 @@ module('Integration | Component | modal', function (hooks) {
   test('it renders', async function (assert) {
     // Render the modal without block content
     await render(hbs`<Modal />`);
-    
+
     // Check if the modal has no text (empty by default)
     assert.dom('.modal-backdrop').exists(); // Ensure the backdrop exists
-    assert.dom('.modal-header').exists();   // Ensure the modal header exists
-    assert.dom('.modal-header h2').hasText('');  // Check if the modal heading is empty by default
+    assert.dom('.modal-header').exists(); // Ensure the modal header exists
+    assert.dom('.modal-header h2').hasText(''); // Check if the modal heading is empty by default
 
     // Template block usage:
     await render(hbs`

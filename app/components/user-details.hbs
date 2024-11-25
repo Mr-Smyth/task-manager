@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="info-actions">
-      <button class="default-button orange-button" type="button">Edit</button>
+      <button class="default-button orange-button" type="button" {{on "click" this.navigateToEditUser}}>Edit</button>  
       <button class="default-button red-button" type="button" {{on "click" this.args.onDelete}}>Delete</button>
       <button class="default-button green-button" type="button" {{on "click" this.args.onClose}}>Close</button>
     </div>

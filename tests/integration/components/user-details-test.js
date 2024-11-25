@@ -26,7 +26,9 @@ module('Integration | Component | user-details', function (hooks) {
     // Pass the user model, onClose, and onDelete actions to the component
     this.set('model', mockUser);
 
-    await render(hbs`<UserDetails @user={{this.model}} @onClose={{this.onClose}} @onDelete={{this.onDelete}} />`);
+    await render(
+      hbs`<UserDetails @user={{this.model}} @onClose={{this.onClose}} @onDelete={{this.onDelete}} />`,
+    );
 
     // Check if the user name is displayed
     assert

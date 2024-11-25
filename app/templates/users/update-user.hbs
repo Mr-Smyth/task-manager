@@ -1,0 +1,33 @@
+{{!-- app/templates/users/update-user.hbs --}}
+{{page-title "Update User"}}
+
+{{!-- Use reusable Modal for updating a User --}}
+<Modal @onClose={{this.closeModal}} @modalHeading={{this.modalHeading}} @modalHeadingClass="modal-header"
+    @modalClass="modal modal-user">
+    {{!-- Form --}}
+    <form {{on "submit" this.updateUser}} class="modal-form-users">
+        <div class="form-group">
+            <label for="userFirstName">User First Name:</label>
+            <input id="userFirstName" name="userFirstName" value={{this.model.firstName}} type="text" required
+                class="form-input">
+        </div>
+
+        <div class="form-group">
+            <label for="userLastName">User Last Name:</label>
+            <input id="userLastName" name="userLastName" value={{this.model.lastName}} type="text" required
+                class="form-input">
+        </div>
+
+        <div class="form-group">
+            <label for="userDescription">Description:</label>
+            <input id="userDescription" name="userDescription" value={{this.model.description}} type="text" required
+                class="form-input">
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="default-button green-button">Save</button>
+            <button type="button" class="default-button red-button" {{on "click" this.cancelEditUser}}>Cancel</button>
+            {{!-- <LinkTo @route="users.user-details" @model={{this.model}} class="link-general">Cancel</LinkTo> --}}
+        </div>
+    </form>
+</Modal>

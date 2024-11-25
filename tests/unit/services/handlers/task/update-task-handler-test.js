@@ -7,7 +7,9 @@ module('Unit | Service | handlers/task/update-task-handler', function (hooks) {
   setupTest(hooks); // This sets up the test environment for the service
 
   test('it exists', function (assert) {
-    let service = this.owner.lookup('service:handlers/task/update-task-handler');
+    let service = this.owner.lookup(
+      'service:handlers/task/update-task-handler',
+    );
     assert.ok(service);
   });
 
@@ -37,7 +39,9 @@ module('Unit | Service | handlers/task/update-task-handler', function (hooks) {
     const next = async () => mockResponse;
 
     // Lookup the service we want to test
-    let service = this.owner.lookup('service:handlers/task/update-task-handler');
+    let service = this.owner.lookup(
+      'service:handlers/task/update-task-handler',
+    );
 
     // Run the request method (the one that processes the task update)
     await run(() => service.request({ request: {} }, next));
@@ -65,6 +69,10 @@ module('Unit | Service | handlers/task/update-task-handler', function (hooks) {
       },
     };
 
-    assert.deepEqual(capturedData, normalizedData, 'store.push was called with the correct normalized data');
+    assert.deepEqual(
+      capturedData,
+      normalizedData,
+      'store.push was called with the correct normalized data',
+    );
   });
 });
