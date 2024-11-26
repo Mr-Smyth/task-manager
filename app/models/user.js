@@ -8,4 +8,8 @@ export default class UserModel extends Model {
   // Tell Ember Data to load the related records asynchronously
   // Also tell Ember Data that the tasks relationship is the inverse of the user relationship in the TaskModel.
   @hasMany('task', { async: true, inverse: 'user' }) tasks;
+
+  get name() {
+    return `${this.firstName} ${this.lastName}`;
+  }
 }

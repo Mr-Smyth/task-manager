@@ -26,8 +26,7 @@ export default class UserSelectorComponent extends Component {
   @action
   handleChange(event) {
     // Convert the selected value to null if it represents unassignment, otherwise remain with same value
-    this.selectedUserId =
-      event.target.value === 'null' ? null : event.target.value;
+      this.selectedUserId = event.target.value ?? null
   }
 
   /**
@@ -44,8 +43,8 @@ export default class UserSelectorComponent extends Component {
 
     // Map over the real users provided in arguments to format them for the dropdown
     const userOptions = this.args.users.map((user) => ({
-      id: user.id, // Use user ID as the value
-      name: `${user.firstName} ${user.lastName}`,
+      id: user.id,
+      name: user.name,
     }));
 
     // Combine the base option with the user options
