@@ -7,13 +7,15 @@ export default class RequestsTaskTaskServiceService extends Service {
   @service store;
   @service('handlers/task/get-tasks-handler') getTaskHandler;
   @service('handlers/task/create-task-handler') createTaskHandler;
+  @service('handlers/task/update-tasks-handler') updateTaskHandler;
 
   constructor() {
     super(...arguments);
     // Initialize RequestManager to manage HTTP requests
     this.manager = new RequestManager();
     // Use custom handler and Fetch middleware for request processing
-    this.manager.use([this.getTaskHandler, this.createTaskHandler, Fetch]);
+    this.manager.use([this.getTaskHandler, this.createTaskHandler, this.updateTaskHandler, Fetch]);
+
   }
 
   /**
