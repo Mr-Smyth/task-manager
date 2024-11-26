@@ -278,7 +278,7 @@ nav a:hover {
   overflow: hidden;
 }
 
-.modal-user {
+.modal-user .modal-task {
   width: 40vw;
 }
 
@@ -345,12 +345,12 @@ nav a:hover {
 /* form layout */
 
 /* Stack form elements vertically */
-.modal-form-tasks {
+.modal-form-tasks-details {
   display: flex;
   flex: 1;
 }
 
-.model-form-users {
+.model-form-users .modal-form-tasks {
   display: flex;
   flex: 1;
   flex-direction: column;
