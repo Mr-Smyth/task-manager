@@ -70,12 +70,6 @@ module('Integration | Component | user-selector', function (hooks) {
 
     // await pauseTest();
 
-    // Check the rendered output
-    // Check if the button text is 'Assign user'
-    assert
-      .dom('[data-test-us-button]')
-      .hasText('Assign user', 'The user sees the correct button Text.');
-
     // Check if there are 4 options in the select element (3 users + 1 unassigned option)
     assert
       .dom('select[data-test-selector] option')

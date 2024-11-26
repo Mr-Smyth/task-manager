@@ -9,7 +9,8 @@
         {{!-- Make button as 'X' --}}
         <button class="small-close-button" type="button" {{on "click" this.closeModal}}>&times;</button>
     </div>
-    <div>
+    <!-- Add a data-test attribute -->
+    <div data-test-modal-content>
         {{!-- Insert content from parent here --}}
         {{yield}}
     </div>

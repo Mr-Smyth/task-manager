@@ -7,12 +7,13 @@ module('Integration | Component | modal', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
-
+    // Render the modal without block content
     await render(hbs`<Modal />`);
-
-    assert.dom().hasText('');
+    
+    // Check if the modal has no text (empty by default)
+    assert.dom('.modal-backdrop').exists(); // Ensure the backdrop exists
+    assert.dom('.modal-header').exists();   // Ensure the modal header exists
+    assert.dom('.modal-header h2').hasText('');  // Check if the modal heading is empty by default
 
     // Template block usage:
     await render(hbs`
@@ -21,6 +22,7 @@ module('Integration | Component | modal', function (hooks) {
       </Modal>
     `);
 
-    assert.dom().hasText('template block text');
+    // Check that the modal content (i.e., the yielded text) is rendered correctly
+    assert.dom('[data-test-modal-content]').hasText('template block text');
   });
 });

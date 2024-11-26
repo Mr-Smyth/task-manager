@@ -6,9 +6,11 @@ export default class UsersRoute extends Route {
   // Get Services required
   @service store;
   @service('requests/user/user-service') requestUserService;
+  @service('requests/task/task-service') requestTaskService;
 
   async model() {
-    // Fetch users from the API each time
+    // Fetch users and tasks from the API each time
+    await this.requestTaskService.getTasks();
     await this.requestUserService.getUsers();
   
     // Retrieve the latest data from the store (now populated with API data)

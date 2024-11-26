@@ -6,7 +6,7 @@
       {{#each this.userOptions as |user|}}
       {{!-- Ensure the currently selected user is the current user --}}
       <option value={{user.id}} selected={{eq user.id this.selectedUserId}} data-test-id={{user.id}}>
-        {{user.firstName}} {{user.lastName}} 
+        {{user.name}}
       </option>
       {{/each}}
     </select>
