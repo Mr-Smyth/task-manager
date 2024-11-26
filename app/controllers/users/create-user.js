@@ -5,6 +5,7 @@ import { action } from '@ember/object';
 export default class UsersCreateUserController extends Controller {
   @service router;
   @service store;
+  @service('requests/user/user-service') requestUserService;
 
   @action
   closeModal() {
@@ -17,14 +18,13 @@ export default class UsersCreateUserController extends Controller {
   }
 
   @action
-  createUser(event) {
+  async createUser(event) {
     event.preventDefault();
 
-    // get the form values from the event target
+    // Get form values entered for the new user
     let userFirstName = event.target.userFirstName.value;
     let userLastName = event.target.userLastName.value;
     let userDescription = event.target.userDescription.value;
-    let userTaskIds = [];
 
     // Basic validation
     if (!userFirstName || !userLastName) {
@@ -32,24 +32,20 @@ export default class UsersCreateUserController extends Controller {
       return;
     }
 
-    // Create a new user record and save it
-    let newUser = this.store.createRecord('user', {
+    // Construct a user object to be passed to the server
+    let newUser = {
       firstName: userFirstName,
       lastName: userLastName,
       description: userDescription,
-      taskIds: userTaskIds,
-    });
+    };
 
-    // Save then reroute to users with closeModal()
-    newUser
-      .save()
-      .then(() => {
-        {
-          this.closeModal();
-        }
-      })
-      .catch((error) => {
-        console.error('Failed to create the new user: ', error);
-      });
+    // Save the user to the server via the service
+    try {
+      await this.requestUserService.createUser(newUser);
+      this.closeModal();
+    } catch (error) {
+      console.error('Error creating user:', error);
+      alert('Failed to create user. Please try again later.');
+    }
   }
 }
