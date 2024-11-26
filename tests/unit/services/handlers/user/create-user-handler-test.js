@@ -4,7 +4,6 @@ import { setupTest } from 'task-manager/tests/helpers';
 import { run } from '@ember/runloop';
 import { normalizeUserToJsonAPIPayload } from 'task-manager/utils/normalize-to-json-api';
 
-
 module('Unit | Service | handlers/user/create-user-handler', function (hooks) {
   setupTest(hooks);
 

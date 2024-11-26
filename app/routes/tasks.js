@@ -12,11 +12,11 @@ export default class TasksRoute extends Route {
     // Fetch users and tasks from the API each time
     await this.requestTaskService.getTasks();
     await this.requestUserService.getUsers();
-  
+
     // Retrieve the latest data from the store (now populated with API data)
     let tasks = this.store.peekAll('task');
     let users = this.store.peekAll('user');
-  
+
     return { tasks, users };
-  }  
+  }
 }
