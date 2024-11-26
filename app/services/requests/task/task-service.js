@@ -7,7 +7,7 @@ export default class RequestsTaskTaskServiceService extends Service {
   @service store;
   @service('handlers/task/get-tasks-handler') getTaskHandler;
   @service('handlers/task/create-task-handler') createTaskHandler;
-  @service('handlers/task/update-tasks-handler') updateTaskHandler;
+  @service('handlers/task/update-task-handler') updateTaskHandler;
 
   constructor() {
     super(...arguments);
