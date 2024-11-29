@@ -1,5 +1,12 @@
 <nav>
-  <LinkTo @route="tasks">Tasks</LinkTo>
-  <LinkTo @route="users">Users</LinkTo>
+  <!-- Logo link to tasks -->
+  <LinkTo @route="tasks" class="logo">Task Manager</LinkTo>
+  
+  <!-- Navigation links -->
+  <div class="nav-links">
+    <LinkTo @route="tasks">Tasks</LinkTo>
+    <LinkTo @route="users">Users</LinkTo>
+  </div>
 </nav>
+
 {{outlet}}

@@ -21,12 +21,30 @@ body {
 
 /* Navigation  */
 nav {
-  background-color: rgb(131 197 132);
-  color: #fff;
-  padding: 10px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between; /* This will position the logo on the left and the links on the right */
   align-items: center;
+  background-color: rgb(131 197 132); /* The same green color */
+  color: #fff;
+  padding: 10px 20px;
+}
+
+/* Logo styling */
+
+nav .logo {
+  font-size: 24px; /* Regular text size */
+  font-weight: bold;
+  color: #ededed;
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: transparent;
+  background: none;
+}
+
+/* Hover state of the logo with glowing effect and slight text enlargement */
+nav .logo:hover {
+  color: #fff;
 }
 
 nav a {
