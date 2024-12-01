@@ -56,4 +56,23 @@ export default class TasksEditTaskController extends Controller {
       console.error('Error saving task:', error);
     }
   }
+
+  @action
+  async deleteTask() {
+    if (confirm('Are you sure you want to delete this task?')) {
+      try {
+        // Explicitly set the user relationship to null
+        this.model.set('user', null);
+
+        // Now destroy the task
+        await this.model.destroyRecord();
+
+        // After deleting the task, close the modal
+        this.closeModal();
+      } catch (error) {
+        console.error('Failed to delete the task: ', error);
+        alert('Error: ' + error.message || 'Failed to delete the task.');
+      }
+    }
+  }
 }

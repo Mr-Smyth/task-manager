@@ -1,4 +1,4 @@
-<Modal @onClose={{this.closeModal}} @modalHeading={{this.modalHeading}} @modalClass="modal modal-edit">
+<Modal @onClose={{this.closeModal}} @modalHeading={{this.modalHeading}} @onDelete={{this.deleteTask}} @modalClass="modal modal-edit">
     {{!-- Form --}}
     <form class="modal-form-tasks-details" {{on "submit" this.editTask}}>
         {{!-- Left side of Modal --}}
@@ -27,7 +27,8 @@
                 <p>Set Status - here</p>
             </div>
             <div class="form-actions">
-                <button type="button" class="default-button red-button" {{on "click" this.closeModal}}>Cancel</button>
+                <button type="button" class="default-button orange-button" {{on "click" this.closeModal}}>Cancel</button>
+                <button class="default-button red-button" type="button" {{on "click" this.deleteTask}}>Delete</button>
                 <button type="submit" class="default-button green-button">Save</button>
             </div>
         </div>
