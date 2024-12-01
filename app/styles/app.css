@@ -21,12 +21,30 @@ body {
 
 /* Navigation  */
 nav {
-  background-color: rgb(131 197 132);
-  color: #fff;
-  padding: 10px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between; /* This will position the logo on the left and the links on the right */
   align-items: center;
+  background-color: rgb(131 197 132); /* The same green color */
+  color: #fff;
+  padding: 10px 20px;
+}
+
+/* Logo styling */
+
+nav .logo {
+  font-size: 24px; /* Regular text size */
+  font-weight: bold;
+  color: #ededed;
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: transparent;
+  background: none;
+}
+
+/* Hover state of the logo with glowing effect and slight text enlargement */
+nav .logo:hover {
+  color: #fff;
 }
 
 nav a {
@@ -275,7 +293,6 @@ nav a:hover {
   box-shadow: 0 4px 10px rgb(0 0 0 / 20%);
   max-width: 100%;
   max-height: 100%;
-  overflow: hidden;
 }
 
 .modal-user .modal-task {
@@ -284,8 +301,10 @@ nav a:hover {
 
 .modal-edit {
   width: 80vw;
-  height: 80vh;
+  max-height: 90vh;
+  overflow-y: auto;
 }
+
 
 /* Modal styling */
 
@@ -504,3 +523,93 @@ nav a:hover {
   justify-content: space-between;
   margin-top: auto;
 }
+
+
+
+/* BREAKPOINT - 1200 */
+@media (max-width: 1200px) {
+  nav a {
+    margin-left: 5px;
+    padding: 5px 8px;
+  }
+
+  .user-box,
+  .task-box {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .modal {
+    width: 80%;
+  }
+
+  .modal-left,
+  .modal-right {
+    flex: 1;
+    border-right: none;
+  }
+
+  .info-panel {
+    width: 70%;
+  }
+
+  .default-button {
+    min-width: 100px;
+    font-size: 14px;
+  }
+}
+
+/* BREAKPOINT - 768 */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  /* Edit Task Buttons */
+  .form-actions {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .user-box,
+  .task-box {
+    flex-direction: column;
+  }
+
+  .user-tasks {
+    text-align: left;
+  }
+
+  .modal {
+    width: 90%;
+    height: auto;
+    padding: 10px;
+  }
+
+  .info-panel {
+    width: 100%;
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+/* BREAKPOINT - 560 */
+
+@media (max-width: 600px) { 
+
+  body {
+    font-size: 14px;
+  }
+
+  /* Edit User Buttons */
+  .info-actions {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+}
+
+
+
