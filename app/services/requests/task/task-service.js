@@ -1,4 +1,3 @@
-// app/services/requests/task/task-service.js
 import Service, { inject as service } from '@ember/service';
 import RequestManager from '@ember-data/request';
 import Fetch from '@ember-data/request/fetch';
@@ -14,8 +13,12 @@ export default class RequestsTaskTaskServiceService extends Service {
     // Initialize RequestManager to manage HTTP requests
     this.manager = new RequestManager();
     // Use custom handler and Fetch middleware for request processing
-    this.manager.use([this.getTaskHandler, this.createTaskHandler, this.updateTaskHandler, Fetch]);
-
+    this.manager.use([
+      this.getTaskHandler,
+      this.createTaskHandler,
+      this.updateTaskHandler,
+      Fetch,
+    ]);
   }
 
   /**
@@ -26,10 +29,12 @@ export default class RequestsTaskTaskServiceService extends Service {
    */
 
   async getTasks() {
-    return this.manager.request({
+    const response = await this.manager.request({
       url: 'http://localhost:3000/task-manager-data/api/tasks',
       method: 'GET',
     });
+
+    return response;
   }
 
   /**
@@ -52,7 +57,10 @@ export default class RequestsTaskTaskServiceService extends Service {
       body: JSON.stringify({
         title: task.title,
         description: task.description,
-        userId: userId,
+        userId: userId || task.user?.id || null, // Ensure userId is either passed, derived from task, or set to null
+        dueDate: task.dueDate || null, // Can be null or a valid date
+        status: task.status,
+        priority: task.priority,
       }),
       headers: headers,
     });
@@ -77,6 +85,9 @@ export default class RequestsTaskTaskServiceService extends Service {
       body: JSON.stringify({
         title: task.title,
         description: task.description,
+        dueDate: task.dueDate || null, // Can be null or a valid date
+        status: task.status,
+        priority: task.priority,
       }),
       headers: headers,
     });

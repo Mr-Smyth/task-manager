@@ -16,4 +16,5 @@ Router.map(function () {
     this.route('user-details', { path: '/details/:user_id' });
     this.route('update-user', { path: '/edit/:user_id' });
   });
+  this.route('audit');
 });

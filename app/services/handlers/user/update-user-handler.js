@@ -1,5 +1,5 @@
 import Service, { inject as service } from '@ember/service';
-import { normalizeUserToJsonAPIPayload } from '../../../utils/normalize-to-json-api';  // If needed, implement normalization logic
+import { normalizeUserToJsonAPIPayload } from '../../../utils/normalize-to-json-api'; // If needed, implement normalization logic
 
 export default class HandlersUserUpdateUserHandlerService extends Service {
   @service store;

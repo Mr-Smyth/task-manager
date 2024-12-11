@@ -1,4 +1,3 @@
-// app/components/user-selector.js
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
@@ -16,7 +15,7 @@ export default class UserSelectorComponent extends Component {
   /**
    * Initialize the selected user ID based on the provided task argument.
    * This method ensures the component starts with the correct user selection,
-   * handling potential null or undefined values gracefully.
+   * handling potential null or undefined values.
    */
   initializeSelectedUserId() {
     // Set the selected user ID to the user's ID if available, or null if unassigned
@@ -26,7 +25,7 @@ export default class UserSelectorComponent extends Component {
   @action
   handleChange(event) {
     // Convert the selected value to null if it represents unassignment, otherwise remain with same value
-      this.selectedUserId = event.target.value ?? null
+    this.selectedUserId = event.target.value ?? null;
   }
 
   /**

@@ -1,6 +1,10 @@
-// app/utils/normalize-to-json-api.js
-
 export function normalizeTaskToJsonAPIPayload(task) {
+  if (!task || !task.id) {
+    console.error('Task data is missing or malformed:', task);
+    // Return an empty array instead of null
+    return { data: [] };
+  }
+
   return {
     data: {
       id: String(task.id),
@@ -8,6 +12,11 @@ export function normalizeTaskToJsonAPIPayload(task) {
       attributes: {
         title: task.title,
         description: task.description,
+        dueDate: task.dueDate,
+        status: task.status,
+        priority: task.priority,
+        createdAt: task.created_at,
+        updatedAt: task.updated_at,
       },
       relationships: {
         user: {
@@ -16,7 +25,7 @@ export function normalizeTaskToJsonAPIPayload(task) {
                 id: String(task.userId),
                 type: 'user',
               }
-            : null, // For cases where the task is unassigned
+            : null,
         },
       },
     },
@@ -47,3 +56,28 @@ export function normalizeUserToJsonAPIPayload(user) {
     },
   };
 }
+
+export function normalizeAuditLogToJsonAPIPayload(auditLog) {
+  // Ensure the required fields exist
+  if (!auditLog || !auditLog.id || !auditLog.event_type) {
+    console.error('Malformed audit log:', auditLog);
+    // Return an empty array to avoid breaking the app
+    return { data: [] };
+  }
+
+  return {
+    data: {
+      type: 'audit-log',
+      id: auditLog.id,
+      attributes: {
+        eventType: auditLog.event_type,
+        entity: auditLog.entity,
+        entityId: auditLog.entity_id,
+        description: auditLog.description,
+        userId: auditLog.user_id,
+        timestamp: auditLog.timestamp,
+      },
+    },
+  };
+}
+

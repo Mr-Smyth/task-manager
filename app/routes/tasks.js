@@ -1,4 +1,3 @@
-// app/routes/tasks.js
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 
@@ -18,5 +17,11 @@ export default class TasksRoute extends Route {
     let users = this.store.peekAll('user');
 
     return { tasks, users };
+  }
+
+  // Hook to reset the selectedFilter to 'all' when entering this route
+  setupController(controller, model) {
+    super.setupController(controller, model);
+    controller.selectedFilter = 'all'; // Reset the filter to 'all' on page load
   }
 }

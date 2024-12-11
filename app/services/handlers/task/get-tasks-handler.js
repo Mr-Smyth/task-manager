@@ -1,4 +1,3 @@
-// app/services/handlers/task/get-tasks-handler.js
 import Service, { inject as service } from '@ember/service';
 import { normalizeTaskToJsonAPIPayload } from '../../../utils/normalize-to-json-api';
 

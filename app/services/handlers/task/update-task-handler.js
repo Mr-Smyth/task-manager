@@ -1,4 +1,3 @@
-// app/services/handlers/task/update-task-handler.js
 import Service, { inject as service } from '@ember/service';
 import { normalizeTaskToJsonAPIPayload } from '../../../utils/normalize-to-json-api';
 
@@ -21,17 +20,13 @@ export default class HandlersTaskUpdateTaskHandler extends Service {
    */
 
   async request(context, next) {
-    // Call the next handler in the chain (the actual request)
     const response = await next(context.request);
 
-    // If the response contains a task, normalize and update the store
-    if (response.content.task) {
-      const updatedTask = response.content.task;
-
-      // Normalize the task data using the utility function and prepare it for the store
+    if (response.content.tasks) {
+      const updatedTask = response.content.tasks[0];
       const taskRecord = normalizeTaskToJsonAPIPayload(updatedTask);
 
-      // Push the normalized task data into the Ember Data store
+      // Push the normalized task into the store
       this.store.push(taskRecord);
     }
 

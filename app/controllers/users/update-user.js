@@ -61,4 +61,3 @@ export default class UsersUpdateUserController extends Controller {
     }
   }
 }
-

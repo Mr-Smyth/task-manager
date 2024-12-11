@@ -1,43 +1,48 @@
-{{!-- app/templates/tasks.hbs --}}
 {{page-title "Tasks"}}
 
 <div class="container">
   <h1>Tasks</h1>
 </div>
 
-{{!-- Create-Task Button --}}
-<div class="container">
+<div class="container task-actions">
   <LinkTo @route="tasks.create-task" class="default-button green-button">Create Task</LinkTo>
+  <div class="task-filter">
+    <label for="task-filter">Filter Tasks:</label>
+    <select id="task-filter" {{on "change" this.filterTasks}}>
+      <option value="all">All</option>
+      <option value="unassigned">Unassigned</option>
+      <option value="assigned">Assigned</option>
+      <option value="done">Done</option>
+    </select>
+  </div>
 </div>
+
 
 <hr class="section-separator">
 
+{{!-- Filtered Tasks Section --}}
 <div class="container">
-  <h2 class="unassigned-tasks-heading">Unassigned Tasks ({{this.unassignedTasks.length}})</h2>
-  {{#each this.unassignedTasks as |task|}}
-  {{!-- wrapping each task in a link --}}
+  <h2>{{this.filterTitle}} Tasks ({{this.filteredTasks.length}})</h2>
+  {{#each this.filteredTasks as |task|}}
   <LinkTo @route="tasks.edit-task" @model={{task}} class="task-link">
-    <div class="task-box  task-box-unassigned">
+    <div class="task-box">
       <div class="task-info">
         <h2>{{task.title}}</h2>
-        <p class="description">{{task.description}}</p>
-        <p class="owner"><strong>Unassigned</strong></p>
-      </div>
-    </div>
-  </LinkTo>
-  {{/each}}
+        <p class="description">Description: {{task.description}}</p>
+        <p class="owner"><strong>Owner: {{if task.user task.user.firstName 'Unassigned'}}</strong></p>
+        <p class="priority">Priority: {{task.priority}}</p>
+        <p class="status">Status: {{task.status}}</p>
+        {{!-- Display Due Date only if it exists, otherwise show N/A --}}
+        <p class="dueDate">
+          Due Date:
+          {{#if task.dueDate}}
+          {{format-date task.dueDate "ddd MMM DD YYYY"}}
+          {{else}}
+          N/A
+          {{/if}}
+        </p>
 
-  <hr class="section-separator">
-
-  <h2>Assigned Tasks ({{this.assignedTasks.length}})</h2>
-  {{#each this.assignedTasks as |task|}}
-  {{!-- wrapping each task in a link --}}
-  <LinkTo @route="tasks.edit-task" @model={{task}} class="link-general">
-    <div class="task-box  task-box-assigned">
-      <div class="task-info">
-        <h2>{{task.title}}</h2>
-        <p class="description">{{task.description}}</p>
-        <p class="owner">Owner: {{task.user.firstName}} {{task.user.lastName}} - {{task.user.description}}</p>
+        <p class="created">Creation Date: {{format-date task.createdAt "YYYY-MM-DD HH:mm:ss"}}</p>
       </div>
     </div>
   </LinkTo>

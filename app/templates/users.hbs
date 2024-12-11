@@ -1,23 +1,28 @@
-{{!-- app/templates/users.hbs --}}
 {{page-title "Users"}}
 
 <div class="container">
   <h1>Users ({{@model.length}})</h1>
 </div>
-{{#each @model as |user|}}
-<LinkTo @route="users.user-details" @model={{user}} class="link-general">
-  <div class="container user-box">
-    <div class="user-link">
-      <h2>{{user.firstName}} {{user.lastName}}</h2>
-    </div>
-  </div>
-</LinkTo>
-{{/each}}
 
 {{!-- Create-User Button --}}
 <div class="container">
   <LinkTo @route="users.create-user" class="default-button green-button">Create User</LinkTo>
 </div>
+
+<hr class="section-separator">
+
+{{#each @model as |user|}}
+  <LinkTo @route="users.user-details" @model={{user}} class="link-general">
+    <div class="container user-box">
+      <div class="user-link">
+        <h2>{{user.firstName}} {{user.lastName}}</h2>
+      </div>
+    </div>
+  </LinkTo>
+{{/each}}
+
+
+
 
 
 
