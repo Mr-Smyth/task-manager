@@ -48,16 +48,6 @@ export default class TasksEditTaskController extends Controller {
     return null;
   }
 
-  // Retrieve priority options
-  get priorityOptions() {
-    return ['low', 'normal', 'high', 'urgent'];
-  }
-
-  // Retrieve status options
-  get statusOptions() {
-    return ['new', 'in-triage', 'in-review', 'in-progress', 'on-hold', 'done'];
-  }
-
   get selectedStatus() {
     return this.model.status;
   }

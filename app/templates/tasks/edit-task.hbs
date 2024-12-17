@@ -29,14 +29,14 @@
             <div>
                 <div class="form-group">
                     {{log this.selectedPriority}}
-                    <TaskOptions @label="Priority:" @options={{this.priorityOptions}}
+                    <TaskOptions @label="Priority:" @variation="priority" @options={{this.priorityOptions}}
                         @selected={{this.selectedPriority}} @onSelect={{this.updatePriority}} />
                 </div>
             </div>
             <div>
                 <div class="form-group">
                     {{log this.selectedStatus}}
-                    <TaskOptions @label="Status:" @options={{this.statusOptions}} @selected={{this.selectedStatus}}
+                    <TaskOptions @label="Status:" @variation="status" @options={{this.statusOptions}} @selected={{this.selectedStatus}}
                         @onSelect={{this.updateStatus}} />
                 </div>
             </div>

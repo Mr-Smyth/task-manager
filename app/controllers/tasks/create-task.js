@@ -11,14 +11,6 @@ export default class TasksCreateTaskController extends Controller {
   @tracked selectedPriority = 'low';
   @tracked selectedStatus = 'new';
 
-  get priorityOptions() {
-    return ['low', 'normal', 'high', 'urgent'];
-  }
-
-  get statusOptions() {
-    return ['new', 'in-triage', 'in-review', 'in-progress', 'on-hold', 'done'];
-  }
-
   @action
   closeModal() {
     this.router.transitionTo('tasks');

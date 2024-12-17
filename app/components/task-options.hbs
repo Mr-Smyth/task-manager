@@ -1,13 +1,11 @@
 <div class="form-group">
   <label>{{@label}}</label>
   <div class="button-group">
-    {{#each @options as |option|}}
-      <button 
-        type="button" 
-        class="button-option {{if (eq @selected option) "selected"}}"
-        {{on "click" (fn @onSelect option)}}>
-        {{option}}
-      </button>
+    {{#each this.options as |option|}}
+    <button type="button" class="button-option {{if (eq @selected option) " selected"}}" {{on "click" (fn @onSelect
+      option)}}>
+      {{option}}
+    </button>
     {{/each}}
   </div>
 </div>

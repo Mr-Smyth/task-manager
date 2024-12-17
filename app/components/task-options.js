@@ -8,4 +8,25 @@ export default class TaskOptionsComponent extends Component {
     // Calling the action passed from parent
     this.args.onSelect(selectedValue);
   }
+
+  get options() {
+    if (this.args.variation === 'priority') {
+      return ['low',
+              'normal',
+              'high',
+              'urgent'
+            ];
+    }
+    if (this.args.variation === 'status') {
+      return [
+        'new',
+        'in-triage',
+        'in-review',
+        'in-progress',
+        'on-hold',
+        'done',
+      ];
+    }
+    return [];
+  }
 }

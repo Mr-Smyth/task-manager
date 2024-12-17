@@ -25,13 +25,13 @@
 
     {{!-- Priority Selector --}}
     <div class="form-group">
-      <TaskOptions @label="Priority:" @options={{this.priorityOptions}} @selected={{this.selectedPriority}}
+      <TaskOptions @label="Priority:" @variation="priority" @selected={{this.selectedPriority}}
         @onSelect={{this.updatePriority}} />
     </div>
 
     {{!-- Status Selector --}}
     <div class="form-group">
-      <TaskOptions @label="Status:" @options={{this.statusOptions}} @selected={{this.selectedStatus}}
+      <TaskOptions @label="Status:" @variation="status" @selected={{this.selectedStatus}}
         @onSelect={{this.updateStatus}} />
     </div>
 
