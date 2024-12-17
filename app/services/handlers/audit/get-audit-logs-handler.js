@@ -27,14 +27,8 @@ export default class HandlersAuditGetAuditLogsHandler extends Service {
           console.error('Invalid audit log format:', log);
         }
       });
-
-      // Verify that the store now contains data
-      console.log('Audit logs in store:', this.store.peekAll('audit-log'));
     } else {
       console.error('Response content is missing or malformed:', response);
     }
-
-    // Return the audit logs from the store
-    return this.store.peekAll('audit-log');
   }
 }

@@ -6,14 +6,10 @@ export default class AuditRoute extends Route {
   @service('requests/audit/get-audit-logs-service') requestAuditService;
 
   async model() {
-    // Fetch the audit logs from the API
+    // Fetch the latest audit logs from the API and allow the handler to populate the store
     await this.requestAuditService.getAuditLogs();
 
-    // Retrieve the latest audit logs from the store
-    let auditLogs = this.store.peekAll('audit-log');
-
-    console.log(auditLogs);  // Logs the audit logs, check the structure
-
-    return auditLogs;  // Ensure you're returning the data correctly
+    // return fresh data from store to template
+    return this.store.peekAll('audit-log');
   }
 }
