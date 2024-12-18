@@ -4,11 +4,13 @@ import { inject as service } from '@ember/service';
 export default class TasksEditTaskRoute extends Route {
   @service store;
 
-  // need to reset the set options for priority and status within the controller
-  // so the modal displays the correct default selections
-  setupController(controller, model) {
-    super.setupController(controller, model);
-    controller.resetDefaults();
+  // Reset the state in the controller when leaving the route
+  resetController(controller, isExiting) {
+    super.resetController(controller, isExiting);
+    if (isExiting) {
+      // Only reset defaults when exiting the route
+      controller.resetDefaults();
+    }
   }
 
   async model(params) {
