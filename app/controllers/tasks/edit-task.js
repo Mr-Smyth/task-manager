@@ -91,25 +91,15 @@ export default class TasksEditTaskController extends Controller {
     this.model.priority = this.selectedPriority;
     this.model.status = this.selectedStatus;
 
-    // If selectedUserId is null, set user to null, otherwise assign the user
-    if (selectedUserId === null) {
-      // Unload the user if it's already in the store
-      if (this.model.user) {
-        this.store.unloadRecord(this.model.user); // Unload the current user if assigned
-      }
-      this.model.set('user', null);
-    } else {
-      let assignedUser = this.users.find((user) => user.id === selectedUserId);
-      this.model.set('user', assignedUser || null);
-    }
-
-    // Ensure the model relationship is saved
     try {
-      await this.requestTaskService.updateTask(
-        this.model,
-        // Only send the selectedUserId if it changed
-        (selectedUserId = this.model.user?.id),
-      );
+      // Save the task's updated properties
+      await this.requestTaskService.updateTask(this.model);
+  
+      // Assign or unassign the user if necessary
+      // Pass the task and the selected user and the service will handle logic and update
+      await this.requestTaskService.assignUserToTask(this.model, selectedUserId);
+  
+      // Close the modal upon success
       this.closeModal();
     } catch (error) {
       console.error('Error saving task:', error);

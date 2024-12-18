@@ -46,7 +46,7 @@ export default class RequestsTaskTaskServiceService extends Service {
    * @returns {Promise} A promise that resolves to the response of the PATCH request.
    */
 
-  async updateTask(task, userId) {
+  async updateTask(task) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json'); // Set the request content type to JSON
 
@@ -57,7 +57,7 @@ export default class RequestsTaskTaskServiceService extends Service {
       body: JSON.stringify({
         title: task.title,
         description: task.description,
-        userId: userId || task.user?.id || null, // Ensure userId is either passed, derived from task, or set to null
+        userId: task.user?.id || null, // Ensure userId is derived from task, or set to null
         dueDate: task.dueDate || null, // Can be null or a valid date
         status: task.status,
         priority: task.priority,
@@ -91,5 +91,34 @@ export default class RequestsTaskTaskServiceService extends Service {
       }),
       headers: headers,
     });
+  }
+
+  /**
+   * Assigns a user to a task and updates the task.
+   *
+   * @param {Object} task - The task object to update.
+   * @param {string|null} selectedUserId - The ID of the user to assign to the task, or null to unassign.
+   * @returns {Promise} A promise that resolves when the update is successful.
+   */
+  async assignUserToTask(task, selectedUserId) {
+    // Determine the current user ID of the task
+    const currentUserId = task.user?.id || null;
+
+    // If the selected user matches the current user, skip the update
+    if (currentUserId === selectedUserId) {
+      return;
+    }
+    // Update the user relationship in the task model
+    if (!selectedUserId) {
+      // Unassign the user
+      task.set('user', null);
+    } else {
+      // Find the user in the store and assign it
+      let assignedUser = this.store.peekRecord('user', selectedUserId);
+      task.set('user', assignedUser || null);
+    }
+
+    // Call the `updateTask` method to persist the change
+    return this.updateTask(task);
   }
 }
