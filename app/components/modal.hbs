@@ -1,4 +1,3 @@
-{{!-- app/components/create-user-modal.hbs --}}
 {{!-- Reusable modal --}}
 {{!-- Full width backdrop --}}
 <div class="modal-backdrop" {{on "click" this.closeModal}}></div>
@@ -6,6 +5,9 @@
 <div class={{@modalClass}}>
     <div class="modal-header">
         <h2>{{@modalHeading}}</h2>
+        <div class="modal-sub-header">
+            <h6>{{@modelSubHeading}}</h6>
+        </div>
         {{!-- Make button as 'X' --}}
         <button class="small-close-button" type="button" {{on "click" this.closeModal}}>&times;</button>
     </div>

@@ -1,22 +1,36 @@
-{{!-- app/templates/tasks/create-task.hbs --}}
 {{page-title "Create Task"}}
 
 {{!-- Use reusable Modal for creating a new Task --}}
-  <Modal @onClose={{this.closeModal}} @modalHeading={{this.modalHeading}} @modalHeadingClass="modal-header" @modalClass="modal modal-task">
-    {{!-- Form --}}
-    <form {{on "submit" this.createTask}} class="modal-form-tasks">
-      <div class="form-group">
-        <label for="taskTitle">Task Title:</label>
-        <input id="taskTitle" name="taskTitle" type="text" required class="form-input">
-      </div>
+<Modal @onClose={{this.closeModal}} @modalHeading={{this.modalHeading}} @modalHeadingClass="modal-header"
+  @modalClass="modal modal-task">
+  {{!-- Form --}}
+  <form {{on "submit" this.createTask}} class="modal-form-tasks">
 
-      <div class="form-group">
-        <label for="taskDescription">Description:</label>
-        <input id="taskDescription" name="taskDescription" type="text" required class="form-input">
-      </div>
+    <div class="form-group">
+      <label for="taskTitle">Task Title:</label>
+      <input id="taskTitle" name="taskTitle" type="text" required class="form-input">
+    </div>
 
-      <div class="form-actions">
-        <button type="submit" class="default-button green-button">Create</button>
-      </div>
-    </form>
-  </Modal>
+    <div class="form-group">
+      <label for="taskDescription">Description:</label>
+      <input id="taskDescription" name="taskDescription" type="text" required class="form-input">
+    </div>
+
+    <hr class="section-separator">
+
+    <div class="form-group">
+      <label for="taskDueDate">Due Date:</label>
+      <input id="taskDueDate" name="taskDueDate" type="date" class="form-input">
+    </div>
+
+    <TaskStatusOptions @label="Status: " />
+    <TaskPriorityOptions @label="Priority: " />
+
+    <hr class="section-separator">
+
+    <div class="form-actions">
+      <button type="submit" class="default-button green-button">Create</button>
+    </div>
+
+  </form>
+</Modal>

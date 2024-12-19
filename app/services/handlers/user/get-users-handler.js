@@ -1,4 +1,3 @@
-// app/services/handlers/user/get-users-handler.js
 import Service, { inject as service } from '@ember/service';
 import { normalizeUserToJsonAPIPayload } from '../../../utils/normalize-to-json-api';
 

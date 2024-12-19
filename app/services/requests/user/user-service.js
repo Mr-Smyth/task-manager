@@ -1,4 +1,3 @@
-// app/services/requests/user/user-service.js
 import Service, { inject as service } from '@ember/service';
 import RequestManager from '@ember-data/request';
 import Fetch from '@ember-data/request/fetch';
@@ -28,10 +27,12 @@ export default class RequestsUserUserService extends Service {
    */
 
   async getUsers() {
-    return this.manager.request({
+    const response = await this.manager.request({
       url: 'http://localhost:3000/task-manager-data/api/users',
       method: 'GET',
     });
+
+    return response;
   }
 
   /**

@@ -5,7 +5,6 @@ export default class UsersUserDetailsRoute extends Route {
   @service store;
 
   model(params) {
-    console.log(params, ' Params');
     // Check if the user is already in the store
     return this.store.peekRecord('user', params.user_id);
   }

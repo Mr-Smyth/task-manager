@@ -1,4 +1,5 @@
-<Modal @onClose={{this.closeModal}} @modalHeading={{this.modalHeading}} @onDelete={{this.deleteTask}} @modalClass="modal modal-edit">
+<Modal @onClose={{this.closeModal}} @modalHeading={{this.modalHeading}} @modelSubHeading={{this.modalSubHeading}} @onDelete={{this.deleteTask}}
+    @modalClass="modal modal-edit">
     {{!-- Form --}}
     <form class="modal-form-tasks-details" {{on "submit" this.editTask}}>
         {{!-- Left side of Modal --}}
@@ -20,14 +21,17 @@
             <div class="assign-user-container">
                 <UserSelector @users={{this.users}} @task={{this.model}} @onUserAssign={{this.assignUser}} />
             </div>
-            <div>
-                <p>Set Priority - here</p>
+            <div class="form-group">
+                <label for="taskDueDate">Due Date:</label>
+                <input id="taskDueDate" name="taskDueDate" type="date" class="form-input" value={{this.dueDate}} />
             </div>
-            <div>
-                <p>Set Status - here</p>
-            </div>
+
+            <TaskStatusOptions @label="Status: "  @currentStatus={{this.model.status}} />
+            <TaskPriorityOptions @label="Priority: " @currentPriority={{this.model.priority}} />
+
             <div class="form-actions">
-                <button type="button" class="default-button orange-button" {{on "click" this.closeModal}}>Cancel</button>
+                <button type="button" class="default-button orange-button" {{on "click"
+                    this.closeModal}}>Cancel</button>
                 <button class="default-button red-button" type="button" {{on "click" this.deleteTask}}>Delete</button>
                 <button type="submit" class="default-button green-button">Save</button>
             </div>

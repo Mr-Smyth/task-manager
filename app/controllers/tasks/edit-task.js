@@ -12,6 +12,11 @@ export default class TasksEditTaskController extends Controller {
     return `Task Details: ${this.model.title}`;
   }
 
+  // setting the sub-heading to be passed to the modal component
+  get modalSubHeading() {
+    return `Created: ${this.model.createdAt}`;
+  }
+
   // Retrieve all users from the store
   get users() {
     return this.store.peekAll('user');
@@ -28,32 +33,56 @@ export default class TasksEditTaskController extends Controller {
     this.router.transitionTo('tasks');
   }
 
+  // Format the model's due date to "YYYY-MM-DD" for input
+  get dueDate() {
+    if (this.model.dueDate) {
+      return new Date(this.model.dueDate).toISOString().split('T')[0];
+    }
+    // Default to empty if no due date is set
+    return null;
+  }
+
   // get the edited task and save
   @action
   async editTask(event) {
     event.preventDefault();
 
-    // Access the form fields via event.target
+    // Collect form data
     let taskName = event.target.taskName.value;
     let taskDescription = event.target.taskDescription.value;
+    let taskDueDate = event.target.taskDueDate.value;
+    let selectedUserId = event.target.querySelector('#assign-user').value;
+    let taskPriority = event.target.prioritySelection.value;
+    let taskStatus = event.target.statusSelection.value;
 
-    // Update the task with new values
+    // Ensure selectedUserId is null if "Unassigned" is selected
+    if (selectedUserId === 'Set as Unassigned' || selectedUserId === '') {
+      selectedUserId = null;
+    }
+
+    // Update the task model with form data
     this.model.title = taskName;
     this.model.description = taskDescription;
+    this.model.dueDate = taskDueDate ? new Date(taskDueDate) : null;
+    this.model.priority = taskPriority;
+    this.model.status = taskStatus;
 
-    // update the user with the task from the option list component selector
-    let selectedUserId = event.target.querySelector('#assign-user').value;
-    let assignedUser = this.users.find((user) => user.id === selectedUserId);
-    this.model.set('user', assignedUser || null);
-
-    // Call the updateTask service to send the PATCH request
     try {
-      await this.requestTaskService.updateTask(this.model, selectedUserId);
+      // Save the task's updated properties
+      await this.requestTaskService.updateTask(this.model);
 
-      // After saving the task, close the modal and return to the task list
+      // Assign or unassign the user if necessary
+      // Pass the task and the selected user and the service will handle logic and update
+      await this.requestTaskService.assignUserToTask(
+        this.model,
+        selectedUserId,
+      );
+
+      // Close the modal upon success
       this.closeModal();
     } catch (error) {
       console.error('Error saving task:', error);
+      alert('Failed to update the task. Please try again later.');
     }
   }
 
