@@ -1,0 +1,8 @@
+<div class="form-group">
+  <label for="statusSelection">{{@label}}</label>
+  <select id="statusSelection" class="form-input">
+    {{#each this.statusOptions as |status|}}
+      <option value={{status}} selected={{eq status this.defaultStatus}}>{{status}}</option>
+    {{/each}}
+  </select>
+</div>

@@ -1,26 +1,20 @@
 import Controller from '@ember/controller';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
-import { tracked } from '@glimmer/tracking';
 
 export default class TasksEditTaskController extends Controller {
   @service router;
   @service store;
   @service('requests/task/task-service') requestTaskService;
 
-  @tracked selectedPriority = this.model.priority;
-  @tracked selectedStatus = this.model.status;
-
-  // Reset the defaults when the modal is opened
-  @action
-  resetDefaults() {
-    this.selectedPriority = this.model.priority;
-    this.selectedStatus = this.model.status;
-  }
-
   // setting the heading to be passed to the modal component
   get modalHeading() {
     return `Task Details: ${this.model.title}`;
+  }
+
+  // setting the sub-heading to be passed to the modal component
+  get modalSubHeading() {
+    return `Created: ${this.model.createdAt}`;
   }
 
   // Retrieve all users from the store
@@ -48,26 +42,6 @@ export default class TasksEditTaskController extends Controller {
     return null;
   }
 
-  get selectedStatus() {
-    return this.model.status;
-  }
-
-  get selectedPriority() {
-    return this.model.priority;
-  }
-
-  // Update priority
-  @action
-  updatePriority(option) {
-    this.selectedPriority = option;
-  }
-
-  // Update status
-  @action
-  updateStatus(option) {
-    this.selectedStatus = option;
-  }
-
   // get the edited task and save
   @action
   async editTask(event) {
@@ -78,6 +52,8 @@ export default class TasksEditTaskController extends Controller {
     let taskDescription = event.target.taskDescription.value;
     let taskDueDate = event.target.taskDueDate.value;
     let selectedUserId = event.target.querySelector('#assign-user').value;
+    let taskPriority = event.target.prioritySelection.value;
+    let taskStatus = event.target.statusSelection.value;
 
     // Ensure selectedUserId is null if "Unassigned" is selected
     if (selectedUserId === 'Set as Unassigned' || selectedUserId === '') {
@@ -88,17 +64,20 @@ export default class TasksEditTaskController extends Controller {
     this.model.title = taskName;
     this.model.description = taskDescription;
     this.model.dueDate = taskDueDate ? new Date(taskDueDate) : null;
-    this.model.priority = this.selectedPriority;
-    this.model.status = this.selectedStatus;
+    this.model.priority = taskPriority;
+    this.model.status = taskStatus;
 
     try {
       // Save the task's updated properties
       await this.requestTaskService.updateTask(this.model);
-  
+
       // Assign or unassign the user if necessary
       // Pass the task and the selected user and the service will handle logic and update
-      await this.requestTaskService.assignUserToTask(this.model, selectedUserId);
-  
+      await this.requestTaskService.assignUserToTask(
+        this.model,
+        selectedUserId,
+      );
+
       // Close the modal upon success
       this.closeModal();
     } catch (error) {

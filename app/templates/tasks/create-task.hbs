@@ -16,24 +16,15 @@
       <input id="taskDescription" name="taskDescription" type="text" required class="form-input">
     </div>
 
+    <hr class="section-separator">
+
     <div class="form-group">
       <label for="taskDueDate">Due Date:</label>
       <input id="taskDueDate" name="taskDueDate" type="date" class="form-input">
     </div>
 
-    <hr class="section-separator">
-
-    {{!-- Priority Selector --}}
-    <div class="form-group">
-      <TaskOptions @label="Priority:" @variation="priority" @selected={{this.selectedPriority}}
-        @onSelect={{this.updatePriority}} />
-    </div>
-
-    {{!-- Status Selector --}}
-    <div class="form-group">
-      <TaskOptions @label="Status:" @variation="status" @selected={{this.selectedStatus}}
-        @onSelect={{this.updateStatus}} />
-    </div>
+    <TaskStatusOptions @label="Status: " />
+    <TaskPriorityOptions @label="Priority: " />
 
     <hr class="section-separator">
 

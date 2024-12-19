@@ -1,0 +1,8 @@
+<div class="form-group">
+  <label for="prioritySelection">{{@label}}</label>
+  <select id="prioritySelection" class="form-input">
+    {{#each this.priorityOptions as |priority|}}
+      <option value={{priority}} selected={{eq priority this.defaultPriority}}>{{priority}}</option>
+    {{/each}}
+  </select>
+</div>

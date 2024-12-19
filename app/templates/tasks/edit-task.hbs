@@ -1,4 +1,4 @@
-<Modal @onClose={{this.closeModal}} @modalHeading={{this.modalHeading}} @onDelete={{this.deleteTask}}
+<Modal @onClose={{this.closeModal}} @modalHeading={{this.modalHeading}} @modelSubHeading={{this.modalSubHeading}} @onDelete={{this.deleteTask}}
     @modalClass="modal modal-edit">
     {{!-- Form --}}
     <form class="modal-form-tasks-details" {{on "submit" this.editTask}}>
@@ -26,18 +26,9 @@
                 <input id="taskDueDate" name="taskDueDate" type="date" class="form-input" value={{this.dueDate}} />
             </div>
 
-            <div>
-                <div class="form-group">
-                    <TaskOptions @label="Priority:" @variation="priority" @options={{this.priorityOptions}}
-                        @selected={{this.selectedPriority}} @onSelect={{this.updatePriority}} />
-                </div>
-            </div>
-            <div>
-                <div class="form-group">
-                    <TaskOptions @label="Status:" @variation="status" @options={{this.statusOptions}} @selected={{this.selectedStatus}}
-                        @onSelect={{this.updateStatus}} />
-                </div>
-            </div>
+            <TaskStatusOptions @label="Status: "  @currentStatus={{this.model.status}} />
+            <TaskPriorityOptions @label="Priority: " @currentPriority={{this.model.priority}} />
+
             <div class="form-actions">
                 <button type="button" class="default-button orange-button" {{on "click"
                     this.closeModal}}>Cancel</button>

@@ -8,35 +8,17 @@ export default class TasksCreateTaskController extends Controller {
   @service store;
   @service('requests/task/task-service') requestTaskService;
 
-  @tracked selectedPriority = 'low';
-  @tracked selectedStatus = 'new';
+  // Initialize the selected status and priority
+  selectedStatus = 'new';  
+  selectedPriority = 'normal';
 
   @action
   closeModal() {
     this.router.transitionTo('tasks');
   }
 
-  // Reset the defaults when the modal is opened
-  @action
-  resetDefaults() {
-    this.selectedPriority = 'low';
-    this.selectedStatus = 'new';
-  }
-
   get modalHeading() {
     return 'Create a new Task:';
-  }
-
-  @action
-  updatePriority(option) {
-    // Directly update with the option value
-    this.selectedPriority = option;
-  }
-
-  @action
-  updateStatus(option) {
-    // Directly update with the option value
-    this.selectedStatus = option;
   }
 
   @action
@@ -47,8 +29,8 @@ export default class TasksCreateTaskController extends Controller {
     let taskTitle = event.target.taskTitle.value;
     let taskDescription = event.target.taskDescription.value;
     let taskDueDate = event.target.taskDueDate.value;
-    let taskPriority = this.selectedPriority;
-    let taskStatus = this.selectedStatus;
+    let taskPriority = event.target.prioritySelection.value;
+    let taskStatus = event.target.statusSelection.value;
 
     // Basic validation
     if (!taskTitle || !taskDescription) {
@@ -64,6 +46,9 @@ export default class TasksCreateTaskController extends Controller {
       priority: taskPriority,
       status: taskStatus,
     };
+
+
+    console.log("New Task is: ", newTask);
 
     // Save the task to the server
     try {

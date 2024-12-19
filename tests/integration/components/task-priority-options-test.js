@@ -3,22 +3,22 @@ import { setupRenderingTest } from 'task-manager/tests/helpers';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | task-options', function (hooks) {
+module('Integration | Component | task-priority-options', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<TaskOptions />`);
+    await render(hbs`<TaskPriorityOptions />`);
 
     assert.dom().hasText('');
 
     // Template block usage:
     await render(hbs`
-      <TaskOptions>
+      <TaskPriorityOptions>
         template block text
-      </TaskOptions>
+      </TaskPriorityOptions>
     `);
 
     assert.dom().hasText('template block text');
